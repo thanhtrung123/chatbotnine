@@ -1,0 +1,1 @@
+require('./drawflow/select2_replace.js');

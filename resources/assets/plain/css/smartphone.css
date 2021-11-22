@@ -1,0 +1,260 @@
+@charset "utf-8";
+@media screen and (max-width: 640px) {
+/* begin chatbot_ank */
+#secton-header h1 span{
+	padding: 12px 0 11px;
+	background: transparent url(../img/images/logo_chatbot_ank_sp.png) no-repeat center center;
+	-moz-background-size: 236px auto;
+	-webkit-background-size: 236px auto;
+	background-size: 236px auto;
+}
+#wrapper-chatbot-ank #main-content{
+	padding: 0;
+}
+.question-title{
+	font-size: 100%;
+	margin: 10px 0;
+}
+.question-title br {
+	display: inline;
+}
+#form_questionCheck .question-check legend{
+	font-size: 100%;
+	margin-bottom: 8px;
+}
+#form_questionCheck .question-check legend .question_txt{
+	font-size: 114.2%;
+	margin-right: 5px;
+}
+#form_questionCheck .question-check legend .question_name_long {
+	padding-left: 35px;
+}
+#form_questionCheck .question-check legend .question_name{
+	display: block;
+	padding-left: 32px;
+	line-height: 1.4;
+}
+#form_questionCheck .question-check legend .question_name_long{
+	display: block;
+	padding-left: 40px;
+	line-height: 1.4;
+}
+#form_questionCheck .question-check{
+	position: relative;
+	padding: 14px 17px 18px;
+	font-size: 100%;
+}
+#form_questionCheck .list_question{
+	padding: 0;
+	border: 1px solid #dadada;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+#form_questionCheck .list_question .radio-inline:before{
+	top: 12px;
+	left: 9px;
+	width: 14px;
+	height: 14px;
+}
+#form_questionCheck .list_question p{
+	margin: 0;
+	border-bottom: 1px solid #dadada;
+}
+#form_questionCheck .list_question p:last-child{
+	border-bottom:none;
+}
+#form_questionCheck .list_question .check-inline,
+#form_questionCheck .list_question .radio-inline{
+	padding:8px 0 9px 28px;
+}
+#form_questionCheck .list_question .check-inline:before{
+	top: 12px;
+	left: 9px;
+	width: 13px;
+	height: 13px;
+}
+#form_questionCheck .list_question input[type="radio"]:checked+.radio-inline:before{
+	-moz-box-shadow: inset 0 0 0 2px #b4b4b4;
+	-webkit-box-shadow: inset 0 0 0 2px #b4b4b4;
+	box-shadow: inset 0 0 0 2px #b4b4b4;
+}
+#form_questionCheck .list_question input[type="checkbox"]:checked+.check-inline:before{
+	width: 13px;
+	height: 13px;
+}
+#form_questionCheck .list_question input[type="checkbox"]:checked+.check-inline:after{
+	left: 5px;
+	top: 4px;
+	width: 5px;
+	height: 9px;
+	border-width: 0 2px 2px 0;
+}
+#form_questionCheck .btn-submit-question{
+	padding: 20px 0 0 0;
+}
+#form_questionCheck .btn-submit-question button{
+	width: 160px;
+	height: 45px;
+	font-size: 128.5%;
+}
+.thanks-question-txt{
+	font-size: 100%;
+	margin-bottom: 20px;
+}
+#form_questionCheck {
+	margin-bottom: 15px;
+}
+#footer .copy-right p{
+	padding: 6px 0 5px 0;
+}
+#form_questionCheck .question_textarea{
+	padding: 0;
+}
+#form_questionCheck .question_textarea textarea{
+	height: 120px;
+	margin-bottom: 0;
+}
+/* end  chatbot_ank */
+	#header {
+		padding: 0;
+	}
+	#header .container {
+		padding: 0;
+	}
+	#header h1 {
+		font-size: 78.6%;
+		padding: 10px 5px 9px 38px;
+		background: url(../img/images/logo.png) no-repeat 5px center;
+		background-size: 26px 26px;
+		-webkit-background-size: 26px 26px;
+		letter-spacing: 0.5px;
+	}
+	#header #request {
+		margin-top: 8px;
+		margin-right: 7px;
+	}
+	#header #request a {
+		font-size: 57.1%;
+		padding: 5px 10px;
+		margin-right: 0;
+		-moz-border-radius: 20px;
+		-webkit-border-radius: 20px;
+		border-radius: 20px;
+		border-bottom-width: 2px;
+		line-height: 1.5;
+	}
+	#main-content {
+		padding-top: 40px;
+	}
+	#main-content .container {
+		padding-top: 5px;
+	}
+	.messages .message-container {
+		margin-bottom: 8px;
+	}
+	.avatar img {
+		width: 38px;
+		height: 38px;
+		float: none;
+	}
+	.messages .bot-message:first-child .message,
+	.messages .bot-message .message {
+		top: 10px;
+		overflow: unset;
+	}
+	.messages .message {
+		width: 100%;
+		padding-left: 0;
+	}
+	.messages .self-message .message {
+		padding-left: 0px;
+	}
+	.messages .bot-message .message:before {
+		width: 12px;
+		height: 8px;
+		top: -8px;
+		left: 13px;
+		background: transparent url(../img/images/sp_white_arrow.png);
+		background-size: 100% 100%;
+		-webkit-background-size: 100% 100%;
+	}
+	.messages .message .cnt {
+		border-radius: 10px;
+	}
+	.messages .bot-message .message .cnt {
+		font-size: 78.5%;
+		padding: 10px 13px;
+		box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+		-moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+		-webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+	}
+	.messages .bot-message .message .cnt.pb25{
+		padding-bottom: 10px !important;
+	}
+	.messages .self-message .message .cnt {
+		font-size: 78.5%;
+		padding: 10px 10px 9px 13px;
+		margin-bottom: 0;
+		line-height: 1.4;
+		border-color: #7fb1dd;
+	}
+	.messages .self-message {
+		padding: 0 16px 0 5px;
+	}
+	.messages .self-message .message:before {
+		width: 14px;
+		height: 12px;
+		right: -13px;
+		top: 11px;
+		background: url(../img/images/sp_blue_arrow.png) 0 0 no-repeat;
+		background-size: cover;
+	}
+	.messages .answers a {
+		display: block;
+		min-width: inherit;
+		width: 100%;
+		padding: 9px 12px 7px;
+		line-height: 1.6;
+		-webkit-border-radius: 15px;
+		-moz-border-radius: 15px;
+		border-radius: 15px;
+		box-shadow: 0 1px 1px 0 rgba(0,0,0,0.4);
+		-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.4);
+		-moz-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.4);
+	}
+	.messages .answers.medium_width a {
+	}
+	.messages .bot-message .message .cnt .has_pr {
+		padding-right: 0;
+	}
+	.messages .bot-message .message .cnt .url_block{
+		margin-top: 5px;
+		padding-bottom: 5px;
+	}
+	.messages .bot-message .message .cnt .url_block a{
+		padding: 5px 18px 5px 13px;
+		border-radius: 15px;
+		-moz-border-radius: 15px;
+		-webkit-border-radius: 15px;
+		-webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.4);
+		-moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.4);
+		box-shadow: 0 1px 2px 0 rgba(0,0,0,0.4);
+	}
+	.messages .bot-message .message .cnt .url_block a:after{
+		right: 10px;
+		margin-top: -4px;
+	}
+	.messages .bot-message .message .cnt .url_block_sp{
+		margin-bottom: 10px;
+	}
+	.messages .answers.double li {
+		width: 48%;
+		margin-right: 4%;
+	}
+	.messages .answers.double li a {
+		display: block;
+		text-align: center;
+		padding: 7px 10px 5px;
+	}
+}

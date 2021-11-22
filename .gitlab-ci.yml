@@ -1,0 +1,18 @@
+image: centos7-php72-ci
+stages:
+  - test
+# phpcpdを実行
+phpcpd_job:
+  stage: test
+  script:
+    - /root/.composer/vendor/bin/phpcpd app
+# phpmdを実行
+phpmd_job:
+  stage: test
+  script:
+    - /root/.composer/vendor/bin/phpmd app text /root/ruleset.xml
+# phpunitを実行
+phpunit_job:
+  stage: test
+  script:
+    - /root/.composer/vendor/bin/phpunit tests

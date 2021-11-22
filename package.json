@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "wp": "npm run watch -- --watch-poll=3000",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "axios": "^0.17",
+    "bootstrap-datepicker": "1.8.x",
+    "bootstrap-sass": "3.3.x",
+    "cross-env": "^5.1",
+    "datatables.net-bs": "1.10.x",
+    "jquery": "3.x",
+    "laravel-mix": "2.x",
+    "lodash": "4.17.x",
+    "pngquant-bin": "4.0.0",
+    "select2": "4.0.2",
+    "vue": "2.5.x",
+    "yarn": "^1.22.17"
+  }
+}

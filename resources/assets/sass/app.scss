@@ -1,0 +1,50 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+// Variables
+@import "variables";
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+// datatables
+@import "~datatables.net-bs/css/dataTables.bootstrap";
+// datepicker
+@import "~bootstrap-datepicker/dist/css/bootstrap-datepicker3";
+// select2
+@import "~select2/dist/css/select2";
+
+//custom css
+
+//top margin
+@for $i from 1 through 4 {
+  .top-buf#{$i * 5} {
+    margin-top: #{$i * 5}px;
+  }
+}
+
+//bottom margin
+@for $i from 1 through 4 {
+  .bottom-buf#{$i * 5} {
+    margin-bottom: #{$i * 5}px;
+  }
+}
+
+//datatables
+.dataTable td, .dataTable th {
+  white-space: nowrap;
+}
+
+.details-control-button {
+  cursor: pointer;
+  font-size: large;
+}
+
+.details-control-button .glyphicon-minus-sign {
+  color: #a9444c;
+}
+
+.details-control-button .glyphicon-plus-sign {
+  color: #39a964;
+}
+
+.details-table {
+  background-color: #eee !important;
+}

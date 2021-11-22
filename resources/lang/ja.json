@@ -1,0 +1,9 @@
+{
+    "Hello!": "お知らせ",
+    "Reset password": "パスワード再設定",
+    "Click button below and reset password.": "ボタンをクリックしてパスワードを再設定してください。",
+    "If you did not request a password reset, no further action is required.": "このメールに心当たりがない場合は、このまま削除してください。",
+    "If you’re having trouble clicking the button above, copy and paste the URL below.": "ボタンがクリックできない場合は、下のURLをコピーしてブラウザのアドレス欄に貼り付け、直接アクセスしてください。",
+    "into your web browser: ": "ブラウザでアクセス：",
+    "学習データ": "QAデータ"
+}
