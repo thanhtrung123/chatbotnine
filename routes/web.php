@@ -10,6 +10,7 @@
   |
  */
 
+Route::get('/languare/{locale}', 'LanguageController@index')->name('language');
 //ChatBot
 Route::get('/', 'Bot\IndexController@index')->name('home');
 //アンケート

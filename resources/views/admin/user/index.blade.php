@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('アカウント情報').' 一覧')
+@section('pageTitle', __('admin.header.アカウント情報').__('admin.一覧'))
 @section('content')
     <div class="container">
         <div class="row">
@@ -13,9 +13,9 @@
                                 <div class="row bottom-buf15">
                                     <div class="col-md-10"></div><div class="col-md-2">
                                     @if(auth()->user()->can('user create'))
-                                        <a class="btn btn-default btn-block" href="{{ route('admin.user.create') }}">新規作成</a>
+                                        <a class="btn btn-default btn-block" href="{{ route('admin.user.create') }}">{{__('admin.user.新規作成')}}</a>
                                     @else
-                                        <a class="btn btn-default btn-block" disabled="">新規作成</a>
+                                        <a class="btn btn-default btn-block" disabled="">{{__('admin.user.新規作成')}}</a>
                                     @endif
                                     </div>
                                 </div>
@@ -26,11 +26,11 @@
                                    ])'>
                                     <thead>
                                     <tr>
-                                        <th data-name="display_name">表示名</th>
-                                        <th data-name="name">ログインID</th>
-                                        <th data-name="email">メールアドレス</th>
+                                        <th data-name="display_name">{{__('admin.user.表示名')}}</th>
+                                        <th data-name="name">{{__('admin.user.ログインID')}}</th>
+                                        <th data-name="email">{{__('admin.user.メールアドレス')}}</th>
                                         <th data-template="true">
-                                            <template><a class="btn btn-default" href="{{ route('admin.user.show',['user'=>'%id%']) }}">詳細</a></template>
+                                            <template><a class="btn btn-default" href="{{ route('admin.user.show',['user'=>'%id%']) }}">{{__('admin.詳細')}}</a></template>
                                         </th>
                                     </tr>
                                     </thead>

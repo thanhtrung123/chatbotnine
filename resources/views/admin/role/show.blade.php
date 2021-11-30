@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('権限情報').' 詳細')
+@section('pageTitle', __('admin.header.権限情報').__('admin.詳細'))
 @section('content')
     <div class="container">
         <div class="row">
@@ -11,13 +11,13 @@
                             <div class="panel-body">
                                 {{ Form::open(['url'=>route('admin.role.destroy',['role'=>$id]),'method'=>'DELETE','class'=>'form-horizontal','id'=>'delete_form']) }}
                                 <div class="form-group" data-confirm>
-                                    <label class="col-md-4 control-label">表示名</label>
+                                    <label class="col-md-4 control-label">{{__('admin.roles.ロール名')}}</label>
                                     <label class="col-md-6 checkbox-inline">
                                         {{ $data['display_name'] }}
                                     </label>
                                 </div>
                                 <div class="form-group" data-confirm>
-                                    <label class="col-md-4 control-label">ロール名</label>
+                                    <label class="col-md-4 control-label">{{__('admin.roles.表示名')}}</label>
                                     <label class="col-md-6 checkbox-inline">
                                         {{ $data['name'] }}
                                     </label>
@@ -29,19 +29,19 @@
                                     <div class="col-md-4"></div>
                                     <div class="col-md-2">
                                         @if(auth()->user()->can('role edit'))
-                                            <a class="btn btn-success btn-block" href="{{ route('admin.role.edit',['role'=>$id]) }}">修正</a>
+                                            <a class="btn btn-success btn-block" href="{{ route('admin.role.edit',['role'=>$id]) }}">{{__('admin.修正')}}</a>
                                         @else
-                                            <a class="btn btn-success btn-block" disabled="">修正</a>
+                                            <a class="btn btn-success btn-block" disabled="">{{__('admin.修正')}}</a>
                                         @endif
                                     </div>
                                     <div class="col-md-2">
                                         @if(auth()->user()->can('role destroy') && $data['name'] != config('acl.admin.role'))
-                                            <button class="btn btn-danger btn-block" type="submit" name="confirm" value="0">削除</button>
+                                            <button class="btn btn-danger btn-block" type="submit" name="confirm" value="0">{{__('admin.削除')}}</button>
                                         @else
-                                            <a class="btn btn-danger btn-block" disabled="">削除</a>
+                                            <a class="btn btn-danger btn-block" disabled="">{{__('admin.削除')}}</a>
                                         @endif
                                     </div>
-                                    <div class="col-md-2"><a class="btn btn-default btn-block" type="submit" href="{{ route('admin.role.index',['r'=>1]) }}">戻る</a></div>
+                                    <div class="col-md-2"><a class="btn btn-default btn-block" type="submit" href="{{ route('admin.role.index',['r'=>1]) }}">{{__('admin.戻る')}}</a></div>
                                 </div>
                                 {{ Form::close() }}
                             </div>

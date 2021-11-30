@@ -18,6 +18,10 @@
     <![endif]-->
     @include('layouts.parts.common_config')
     <link rel="icon" href="{{asset('img/favicon/favicon.ico')}}" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="apple-touch-icon" href="{{asset('img/favicon/apple-touch-icon.png')}}"/>
     <link rel="apple-touch-icon-precomposed" href="{{asset('img/favicon/apple-touch-icon.png')}}"/>
     <link rel="stylesheet" href="{{ asset(mix('/css/main.css')) }}" type="text/css" media="screen"/>
@@ -64,14 +68,14 @@
     <!-- Modal title -->
     <div class="modal-header">
         <div class="content-header">
-            <span>{{__(config('bot.const.bot_dialog_alert_title'))}}</span>
+            <span>{{__('.const.bot_dialog_alert_title')}}</span>
             <i class="fa fa-times closeModal" aria-hidden="true"></i>
         </div>
     </div>
     <!-- Modal content -->
     <div class="modal-content">
         <p>
-            {{__(config('bot.const.bot_dialog_alert_voiceapi_fail'))}}
+            {{__('const.bot_dialog_alert_voiceapi_fail')}}
         </p>
     </div>
     <div class="modal-footer">

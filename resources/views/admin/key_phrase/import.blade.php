@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('キーフレーズデータ').' インポート')
+@section('pageTitle', __('admin.header.キーフレーズ').__('admin.インポート'))
 @section('content')
 <div class="container">
     <div class="row">
@@ -23,9 +23,7 @@
                                     @if($isConfirm)
                                     <div class="row">
                                         <div class="col-md-12">
-                                            問題ございません。<br/>
-                                            このまま、{{ __('キーフレーズデータ') }}を更新される場合、<br/>
-                                            以下の登録ボタンをクリックしてください。
+                                           {{__('admin.key_phrase.問題ございません。<br/>このまま、キーフレーズデータを更新される場合、<br/>以下の登録ボタンをクリックしてください。')}}
                                         </div>
                                     </div>
                                     <div class="row">
@@ -40,17 +38,17 @@
                                     @else
                                     <div class="row bottom-buf10">
                                         <div class="col-md-12 text-danger">
-                                            <strong>!!注意!! 現状の{{ __('キーフレーズデータ') }}はすべて削除されます（復元はできません）</strong>
+                                            <strong>{{__('admin.key_phrase.!!注意!! 現状のキーフレーズデータはすべて削除されます（復元はできません）')}}</strong>
                                         </div>
                                     </div>
-                                    {{ Form::form_file('excel','Excelファイル(.xlsx、.xls)', '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
+                                    {{ Form::form_file('excel',__('admin.Excelファイル(.xlsx、.xls)'), '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-2">
-                                            <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">インポート</button>
+                                            <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.インポート')}}</button>
                                         </div>
                                         <div class="col-md-2">
-                                            <a class="btn btn-default btn-block" href="{{ route('admin.key_phrase.index') }}">戻る</a>
+                                            <a class="btn btn-default btn-block" href="{{ route('admin.key_phrase.index') }}">{{__('admin.戻る')}}</a>
                                         </div>
                                     </div>
                                     @endif

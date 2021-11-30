@@ -24,58 +24,57 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false" aria-haspopup="true" v-pre>データ管理<span class="caret"></span>
+                           aria-expanded="false" aria-haspopup="true" v-pre>{{__('admin.header.データ管理')}}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('admin.learning.index') }}">{{__('学習データ')}}</a>
-                                <a href="{{ route('admin.synonym.index') }}">{{__('類義語データ')}}</a>
-                                <a href="{{ route('admin.variant.index') }}">{{__('異表記データ')}}</a>
-                                <a href="{{ route('admin.proper_noun.index') }}">{{__('固有名詞')}}</a>
+                                <a href="{{ route('admin.learning.index') }}">{{__('admin.header.学習データ')}}</a>
+                                <a href="{{ route('admin.synonym.index') }}">{{__('admin.header.類義語データ')}}</a>
+                                <a href="{{ route('admin.variant.index') }}">{{__('admin.header.異表記データ')}}</a>
+                                <a href="{{ route('admin.proper_noun.index') }}">{{__('admin.header.固有名詞')}}</a>
                                 @if(config('bot.truth.enabled'))
-                                    <a href="{{ route('admin.key_phrase.index') }}">{{__('キーフレーズ')}}</a>
+                                    <a href="{{ route('admin.key_phrase.index') }}">{{__('admin.header.キーフレーズ')}}</a>
                                 @endif
-                                <a href="{{ route('admin.category.index') }}">{{__('カテゴリ')}}</a>
-                                <a href="{{ route('admin.scenario.editor') }}">{{__('シナリオ管理')}}</a>
-                                <a href="{{ route('admin.learning_relation.index') }}">{{__('関連質問')}}</a>
+                                <a href="{{ route('admin.category.index') }}">{{__('admin.header.カテゴリ')}}</a>
+                                <a href="{{ route('admin.scenario.editor') }}">{{__('admin.header.シナリオ管理')}}</a>
+                                <a href="{{ route('admin.learning_relation.index') }}">{{__('admin.header.関連質問')}}</a>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false" aria-haspopup="true" v-pre>{{ __('応答状況') }}管理<span class="caret"></span>
+                           aria-expanded="false" aria-haspopup="true" v-pre>{{ __('admin.header.応答状況') }} {{__('admin.header.管理')}}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('admin.response_info.index') }}">{{ __('応答状況') }}</a>
-                                <a href="{{ route('admin.enquete.index') }}">{{ __('アンケート') }}</a>
-                                <a href="{{ route('admin.report.list') }}">{{__('応答状況集計')}}</a>
+                                <a href="{{ route('admin.response_info.index') }}">{{ __('admin.header.応答状況') }}</a>
+                                <a href="{{ route('admin.enquete.index') }}">{{ __('admin.header.アンケート') }}</a>
+                                <a href="{{ route('admin.report.list') }}">{{__('admin.header.応答状況集計')}}</a>
                             </li>
                         </ul>
                     </li>
                     @role('admin')
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false" aria-haspopup="true" v-pre>{{ __('システム管理') }}<span class="caret"></span>
+                           aria-expanded="false" aria-haspopup="true" v-pre>{{ __('admin.header.システム管理') }}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('admin.user.index') }}">{{ __('アカウント情報') }}</a>
-                                <a href="{{ route('admin.role.index') }}">{{ __('権限情報') }}</a>
-                                <a href="{{ route('admin.log.index') }}">{{ __('ログ情報') }}</a>
+                                <a href="{{ route('admin.user.index') }}">{{ __('admin.header.アカウント情報') }}</a>
+                                <a href="{{ route('admin.role.index') }}">{{ __('admin.header.権限情報') }}</a>
+                                <a href="{{ route('admin.log.index') }}">{{ __('admin.header.ログ情報') }}</a>
                             </li>
                         </ul>
                     </li>
                     @endrole
-                    <li><a href="javascript:void(0);" data-modal='@json(['type'=>'chat'])'>チャット</a></li>
+                    <li><a href="javascript:void(0);" data-modal='@json(['type'=>'chat'])'>{{__('admin.header.チャット')}}</a></li>
                 @endguest
             </ul>
-
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @guest
-                    <li><a href="{{ route('login') }}">ログイン</a></li>
+                    <li><a href="{{ route('login') }}">{{__('auth.title_login')}}</a></li>
                 <!--<li><a href="{{ route('register') }}">Register</a></li>-->
                 @else
                     <li class="dropdown">
@@ -89,7 +88,7 @@
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">
-                                    {{ __('ログアウト') }}
+                                    {{ __('admin.header.ログアウト') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -101,6 +100,23 @@
                     </li>
                 @endguest
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-expanded="false" aria-haspopup="true" v-pre>
+                       {{__('Language')}}
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="{{route('language',['en'])}}">En</a>
+                            <a class="dropdown-item" href="{{route('language',['ja'])}}">Ja</a>
+                            <a class="dropdown-item" href="{{route('language',['vi'])}}">Vi</a>
+                        </li>
+                    </ul>
+                </li>
+        </ul>
+            
         </div>
     </div>
 </nav>

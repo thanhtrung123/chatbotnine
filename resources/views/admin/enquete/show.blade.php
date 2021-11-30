@@ -13,8 +13,8 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>質問</th>
-                                            <th>回答</th>
+                                            <th>{{__('admin.enquete.質問')}}</th>
+                                            <th>{{__('admin.enquete.回答')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -38,7 +38,7 @@
                                 <div class="row">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-2">
-                                        <a class="btn btn-default btn-block" href="{{ route('admin.enquete.index',['r'=>1]) }}">戻る</a>
+                                        <a class="btn btn-default btn-block" href="{{ route('admin.enquete.index',['r'=>1]) }}">{{__('admin.戻る')}}</a>
                                     </div>
                                 </div>
                             </div>

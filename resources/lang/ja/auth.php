@@ -18,5 +18,11 @@ return [
 
     'failed' => '認証に失敗しました',
     'throttle' => ':seconds 秒以上開けて再度お試しください',
+    'account' => 'アカウント',
+    'password' => 'パスワード',
+    'title_login' => 'ログイン',
+    'remember_me' => 'ログイン状態を保存する',
+    'forgot_password' => 'パスワードを忘れた方',
+    'button_login' => 'ログイン',
 
 ];
