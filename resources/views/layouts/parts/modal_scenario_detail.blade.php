@@ -60,7 +60,7 @@
         </div>
         <!-- footer -->
         <div class="modal-footer modal-footer--mine" style="text-align: center">
-            <button type="button" class="btn btn-default closeModalAddSc" data-dismiss="modal">閉じる</button>
+            <button type="button" class="btn btn-default closeModalAddSc" data-dismiss="modal">{{__('admin.cancel')}} </button>
         </div>
     </div>
 </div>

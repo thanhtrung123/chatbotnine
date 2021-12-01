@@ -68,14 +68,14 @@
     <!-- Modal title -->
     <div class="modal-header">
         <div class="content-header">
-            <span>{{__('.const.bot_dialog_alert_title')}}</span>
+            <span>{{__('bot.const.bot_dialog_alert_title')}}</span>
             <i class="fa fa-times closeModal" aria-hidden="true"></i>
         </div>
     </div>
     <!-- Modal content -->
     <div class="modal-content">
         <p>
-            {{__('const.bot_dialog_alert_voiceapi_fail')}}
+            {{__('bot.const.bot_dialog_alert_voiceapi_fail')}}
         </p>
     </div>
     <div class="modal-footer">

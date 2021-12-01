@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('admin.header.シナリオ管理'))
+@section('pageTitle', __('admin.header.scenario_management'))
 @section('content')
 @section('cssfiles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,23 +27,23 @@
                                     <div class="wrapper editor-body">
                                         <div class="col-md-2 col-left-btn" style="padding: 0">
                                             <div class="click-drawflow" draggable="false" data-node="category">
-                                                <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#scenarioAdd" title=" シナリオ追加" data-keyboard="false" data-backdrop="static"> シナリオ追加</button>
-                                                <button type="button" class="btn btn-pink edit-btn-scenario  edit-scenario" title="シナリオ編集">  シナリオ編集 </button>
-                                                <button type="button" class="btn btn-gr add-qa" title="QAデータ追加"> QAデータ追加 </button>
-                                                <button type="button" class="btn btn-org edit-btn-scenario copy-node" data-toggle="modal" data-target="" title="Ctrl + C ➝ Ctrl + V"> 選択ノード複製</button>
-                                                <button type="button" class="btn btn-yl edit-btn-scenario delete-node" data-toggle="modal" data-target="" title="Delete キー"> 選択ノード削除</button>
+                                                <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#scenarioAdd" title=" シナリオ追加" data-keyboard="false" data-backdrop="static"> {{__('admin.scenario.add_scenario')}}</button>
+                                                <button type="button" class="btn btn-pink edit-btn-scenario  edit-scenario" title="シナリオ編集">{{__('admin.scenario.scenario_edit')}}   </button>
+                                                <button type="button" class="btn btn-gr add-qa" title="QAデータ追加"> {{__('admin.scenario.qa_data')}} </button>
+                                                <button type="button" class="btn btn-org edit-btn-scenario copy-node" data-toggle="modal" data-target="" title="Ctrl + C ➝ Ctrl + V">{{__('admin.scenario.selected_node_replication')}} </button>
+                                                <button type="button" class="btn btn-yl edit-btn-scenario delete-node" data-toggle="modal" data-target="" title="Delete キー">{{__('admin.scenario.del_selected_node')}} </button>
                                             </div>
                                             <div class="btn-col">
-                                                <button type="button" class="btn btn-pri status-scenario save-scenario" data-toggle="modal" data-target="" title="Ctrl + S"> すべてのノードを保存 </button>
-                                                <button type="button" class="btn btn-red delete-all-scenario" data-toggle="modal" data-target="" title="すべてのノードを削除"> すべてのノードを削除</button>
+                                                <button type="button" class="btn btn-pri status-scenario save-scenario" data-toggle="modal" data-target="" title="Ctrl + S">{{__('admin.scenario.save_all_nodes')}}  </button>
+                                                <button type="button" class="btn btn-red delete-all-scenario" data-toggle="modal" data-target="" title="すべてのノードを削除">{{__('admin.scenario.del_all_nodes')}} </button>
                                             </div>
                                             <div class="btn-col-import">
-                                                <button type="button" class="btn btn-iexport import-export-scenario" data-toggle="modal" data-target="#scenarioImportExport" title="インポート/エクスポート">インポート/エクスポート</button>
+                                                <button type="button" class="btn btn-iexport import-export-scenario" data-toggle="modal" data-target="#scenarioImportExport" title="インポート/エクスポート">{{__('admin.scenario.import_export')}}</button>
                                             </div>
                                             <div class="search-col">
                                                 <ul class="nav nav-tabs" role="tablist">
-                                                    <li role="presentation" class="active tabscenario"><a href="#scenario" aria-controls="scenario" role="tab" data-toggle="tab">シナリオ</a></li>
-                                                    <li role="presentation" style="float:right" class="tabqa"><a href="#QA" aria-controls="QA" role="tab" data-toggle="tab">QAデータ</a></li>
+                                                    <li role="presentation" class="active tabscenario"><a href="#scenario" aria-controls="scenario" role="tab" data-toggle="tab">{{__('admin.scenario.scenario')}}</a></li>
+                                                    <li role="presentation" style="float:right" class="tabqa"><a href="#QA" aria-controls="QA" role="tab" data-toggle="tab">{{__('admin.scenario.qa_data')}}</a></li>
                                                 </ul>
                                                 <div class="tab-content" style="padding: 10px 0 0 0">
                                                     <div role="tabpanel" class="tab-pane active" id="scenario">
@@ -123,8 +123,8 @@
                                     <div class="modal-body message_body" style="margin-right: 15px;">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger delete-scenario-all" data-dismiss="modal">削除</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                                        <button type="button" class="btn btn-danger delete-scenario-all" data-dismiss="modal">{{__('admin.delete')}}</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">{{__('admin.close')}}</button>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@
                                     <div class="modal-body message_body" style="margin-right: 15px;">
                                     </div>
                                     <div class="modal-footer" style="text-align: center">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">{{__('admin.close')}}</button>
                                     </div>
                                 </div>
                             </div>

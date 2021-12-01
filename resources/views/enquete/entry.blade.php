@@ -26,7 +26,7 @@
                                 {!! $setting['remarks'] ?? '' !!}
                             </legend>
                             @switch($setting['type'])
-                                @case(config('const.enquete.form.text.id'))
+                                @case(__('const.enquete.form.text.id'))
                                 {{Form::text("question[{$q_cd}]")}}
                                 @break
                                 @case(config('const.enquete.form.textarea.id'))
@@ -86,7 +86,7 @@
         <div id="footer">
             <div class="copy-right">
                 <div class="container">
-                    <p>{{config('bot.const.bot_copyright')}}</p>
+                    <p>{{__('bot.const.bot_copyright')}}</p>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
 
         window.CHAT_BOT = {
             route: @json($route),
-            ua_status: @json(config('const.useragent.status')),
+            ua_status: @json(__('const.useragent.status')),
         };
 
         var is_web = {{$is_web ? 'true' : 'false'}};
@@ -147,10 +147,10 @@
         //登録後
         if (store) {
             if (is_web) {
-                alert(@json(config('bot.enquete.messages.send_complete')));
+                alert(@json(__('bot.enquete.messages.send_complete')));
                 window.close();
             } else {
-                alert(@json(config('bot.enquete.messages.send_complete_sns')));
+                alert(@json(__('bot.enquete.messages.send_complete_sns')));
                 $(':submit,:input').prop('disabled', true);
             }
         }

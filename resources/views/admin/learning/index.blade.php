@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('admin.header.学習データ'). __('admin.一覧'))
+@section('pageTitle', __('admin.header.training_data'). __('admin.list'))
 @section('content')
 @section('cssfiles')
     <link rel="stylesheet" href="{{ asset(mix('css/synonym.css')) }}" type="text/css">
@@ -14,11 +14,11 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 {{ Form::open(['class'=>'form-horizontal','id'=>'search_form']) }}
-                                {{ Form::form_text('keyword',__('admin.キーワード'),false,['autofocus'=>true]) }}
+                                {{ Form::form_text('keyword',__('admin.keyword'),false,['autofocus'=>true]) }}
                                 @if(config('bot.truth.enabled'))
-                                    {{ Form::form_text('keyword_key_phrase',__('admin.learning.キーフレーズ'),false,[]) }}
+                                    {{ Form::form_text('keyword_key_phrase',__('admin.learning.key_phrase'),false,[]) }}
                                 @endif
-                                {{ Form::form_select('category_id',__('admin.learning.カテゴリ'), $category_data,false,['class'=>'select2']) }}
+                                {{ Form::form_select('category_id',__('admin.learning.category'), $category_data,false,['class'=>'select2']) }}
                                 {{--                                {{ Form::form_text('keyword_meta','キーワード(メタ)',false,[]) }}--}}
                                 <div class="row">
                                     <div class="col-md-4"></div>
@@ -34,19 +34,19 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 @if(auth()->user()->can('learning create'))
-                                    <a class="btn btn-block btn-default" href="{{ route('admin.learning.create') }}">{{__('admin.新規追加')}}</a>
+                                    <a class="btn btn-block btn-default" href="{{ route('admin.learning.create') }}">{{__('admin.create')}}</a>
                                 @else
-                                    <a class="btn btn-block btn-default" disabled="">{{__('admin.新規追加')}}</a>
+                                    <a class="btn btn-block btn-default" disabled="">{{__('admin.create')}}</a>
                                 @endif
                                 @if(auth()->user()->can('learning import'))
-                                    <a class="btn btn-block btn-default" href="{{ route('admin.learning.import') }}">{{__('admin.インポート')}}</a>
+                                    <a class="btn btn-block btn-default" href="{{ route('admin.learning.import') }}">{{__('admin.import')}}</a>
                                 @else
-                                    <a class="btn btn-block btn-default" disabled="">{{__('admin.インポート')}}</a>
+                                    <a class="btn btn-block btn-default" disabled="">{{__('admin.import')}}</a>
                                 @endif
                                 @if(auth()->user()->can('learning export'))
-                                    <a class="btn btn-block btn-default" href="{{ route('admin.learning.export') }}">{{__('admin.エクスポート')}}</a>
+                                    <a class="btn btn-block btn-default" href="{{ route('admin.learning.export') }}">{{__('admin.export')}}</a>
                                 @else
-                                    <a class="btn btn-block btn-default" disabled="">{{__('admin.エクスポート')}}</a>
+                                    <a class="btn btn-block btn-default" disabled="">{{__('admin.export')}}</a>
                                 @endif
                                 @php
                                     $chain = [];
@@ -57,12 +57,12 @@
                                         'ajax' => ['url' => route('api.admin.learning.sync',['mode'=>'morph'])],
                                         'chain' => $chain,
                                         'message' => [
-                                            'title' => __('admin.learning.学習データ').__('admin.learning.同期'),
-                                            'body' => __('admin.learning.チャットボットAPIに').__('admin.learning.学習データ').__('admin.learning.を反映させます。').__('admin.learning.よろしければ、実行ボタンを押下してください。'),
+                                            'title' => __('admin.learning.training_data').__('admin.learning.sync'),
+                                            'body' => __('admin.learning.チャットボットAPIに').__('admin.learning.training_data').__('admin.learning.を反映させます。').__('admin.learning.よろしければ、実行ボタンを押下してください。'),
                                         ],
                                     ];
                                 @endphp
-                                <a id='sysn' class="btn btn-block {{ ($count_learning > 0) ? 'button-glow' : 'btn-default' }}" data-modal='@json($ajax_modal)'>{{__('admin.learning.同期')}}</a>
+                                <a id='sysn' class="btn btn-block {{ ($count_learning > 0) ? 'button-glow' : 'btn-default' }}" data-modal='@json($ajax_modal)'>{{__('admin.learning.sync')}}</a>
                             </div>
                         </div>
                     </div>
@@ -81,27 +81,27 @@
                                     <thead>
                                     <tr>
                                         <th data-name="api_id">ID</th>
-                                        <th data-name="question">{{__('admin.learning.質問文章')}}</th>
-                                        <th data-name="answer">{{__('admin.learning.回答文章')}}</th>
+                                        <th data-name="question">{{__('admin.learning.question_text')}}</th>
+                                        <th data-name="answer">{{__('admin.learning.answer_text')}}</th>
                                         {{--                                        <th data-name="question_morph">解析後(仮</th>--}}
                                         {{--                                        <th data-name="metadata">メタ(仮</th>--}}
                                         @if(config('bot.truth.enabled'))
-                                            <th data-name="key_phrase">{{__('admin.learning.キーフレーズ')}}</th>
+                                            <th data-name="key_phrase">{{__('admin.learning.key_phrase')}}</th>
                                         @endif
                                         <th data-template="true">
                                             <template>
                                                 @if(auth()->user()->can('learning edit'))
-                                                    <a class="btn btn-default" href="{{ route('admin.learning.edit',['user'=>'%id%']) }}">{{__('admin.learning.修正')}}</a>
+                                                    <a class="btn btn-default" href="{{ route('admin.learning.edit',['user'=>'%id%']) }}">{{__('admin.edit')}}</a>
                                                 @else
-                                                    <a class="btn btn-default" disabled="">{{__('admin.learning.修正')}}</a>
+                                                    <a class="btn btn-default" disabled="">{{__('admin.edit')}}</a>
                                                 @endif
                                                 @if(auth()->user()->can('learning destroy'))
                                                     <a class="btn btn-default" data-modal='@json([
                                                 'type' => 'delete',
                                                 'params' => ['action'=>route('admin.learning.destroy',['learning'=>'%id%'])]
-                                                ])'>{{__('admin.learning.削除')}}</a>
+                                                ])'>{{__('admin.delete')}}</a>
                                                 @else
-                                                    <a class="btn btn-default" disabled="">{{__('admin.learning.削除')}}</a>
+                                                    <a class="btn btn-default" disabled="">{{__('admin.delete')}}</a>
                                                 @endif
                                             </template>
                                         </th>

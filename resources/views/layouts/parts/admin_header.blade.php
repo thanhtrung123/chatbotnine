@@ -24,50 +24,50 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false" aria-haspopup="true" v-pre>{{__('admin.header.データ管理')}}<span class="caret"></span>
+                           aria-expanded="false" aria-haspopup="true" v-pre>{{__('admin.header.data_management')}}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('admin.learning.index') }}">{{__('admin.header.学習データ')}}</a>
-                                <a href="{{ route('admin.synonym.index') }}">{{__('admin.header.類義語データ')}}</a>
-                                <a href="{{ route('admin.variant.index') }}">{{__('admin.header.異表記データ')}}</a>
-                                <a href="{{ route('admin.proper_noun.index') }}">{{__('admin.header.固有名詞')}}</a>
+                                <a href="{{ route('admin.learning.index') }}">{{__('admin.header.training_data')}}</a>
+                                <a href="{{ route('admin.synonym.index') }}">{{__('admin.header.synonym_data')}}</a>
+                                <a href="{{ route('admin.variant.index') }}">{{__('admin.header.variant')}}</a>
+                                <a href="{{ route('admin.proper_noun.index') }}">{{__('admin.header.proper_noun')}}</a>
                                 @if(config('bot.truth.enabled'))
-                                    <a href="{{ route('admin.key_phrase.index') }}">{{__('admin.header.キーフレーズ')}}</a>
+                                    <a href="{{ route('admin.key_phrase.index') }}">{{__('admin.header.key_phrase')}}</a>
                                 @endif
-                                <a href="{{ route('admin.category.index') }}">{{__('admin.header.カテゴリ')}}</a>
-                                <a href="{{ route('admin.scenario.editor') }}">{{__('admin.header.シナリオ管理')}}</a>
-                                <a href="{{ route('admin.learning_relation.index') }}">{{__('admin.header.関連質問')}}</a>
+                                <a href="{{ route('admin.category.index') }}">{{__('admin.header.category')}}</a>
+                                <a href="{{ route('admin.scenario.editor') }}">{{__('admin.header.scenario_management')}}</a>
+                                <a href="{{ route('admin.learning_relation.index') }}">{{__('admin.header.related_questions')}}</a>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false" aria-haspopup="true" v-pre>{{ __('admin.header.応答状況') }} {{__('admin.header.管理')}}<span class="caret"></span>
+                           aria-expanded="false" aria-haspopup="true" v-pre>{{ __('admin.header.Response_stt') }} {{__('admin.header.management')}}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('admin.response_info.index') }}">{{ __('admin.header.応答状況') }}</a>
-                                <a href="{{ route('admin.enquete.index') }}">{{ __('admin.header.アンケート') }}</a>
-                                <a href="{{ route('admin.report.list') }}">{{__('admin.header.応答状況集計')}}</a>
+                                <a href="{{ route('admin.response_info.index') }}">{{ __('admin.header.Response_stt') }}</a>
+                                <a href="{{ route('admin.enquete.index') }}">{{ __('admin.header.questionnaire') }}</a>
+                                <a href="{{ route('admin.report.list') }}">{{__('admin.header.sesponse_stt_summary')}}</a>
                             </li>
                         </ul>
                     </li>
                     @role('admin')
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false" aria-haspopup="true" v-pre>{{ __('admin.header.システム管理') }}<span class="caret"></span>
+                           aria-expanded="false" aria-haspopup="true" v-pre>{{ __('admin.header.system_management') }}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('admin.user.index') }}">{{ __('admin.header.アカウント情報') }}</a>
-                                <a href="{{ route('admin.role.index') }}">{{ __('admin.header.権限情報') }}</a>
-                                <a href="{{ route('admin.log.index') }}">{{ __('admin.header.ログ情報') }}</a>
+                                <a href="{{ route('admin.user.index') }}">{{ __('admin.header.account_inf') }}</a>
+                                <a href="{{ route('admin.role.index') }}">{{ __('admin.header.authority_inf') }}</a>
+                                <a href="{{ route('admin.log.index') }}">{{ __('admin.header.log') }}</a>
                             </li>
                         </ul>
                     </li>
                     @endrole
-                    <li><a href="javascript:void(0);" data-modal='@json(['type'=>'chat'])'>{{__('admin.header.チャット')}}</a></li>
+                    <li><a href="javascript:void(0);" data-modal='@json(['type'=>'chat'])'>{{__('admin.header.chat')}}</a></li>
                 @endguest
             </ul>
             <!-- Right Side Of Navbar -->
@@ -88,7 +88,7 @@
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">
-                                    {{ __('admin.header.ログアウト') }}
+                                    {{ __('admin.header.log_out') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
