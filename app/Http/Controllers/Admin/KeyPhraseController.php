@@ -85,7 +85,7 @@ class KeyPhraseController extends Controller
      */
     public function index()
     {
-        $statuses = Constant::getConstArray('common.disabled');
+        $statuses = Constant::getConstArray(__('const.common.disabled'));
         return view(self::ROUTE_NAME . '.index')->with('statuses', $statuses);
     }
 
@@ -154,7 +154,7 @@ class KeyPhraseController extends Controller
         $request->request->add($key_phrase);
         //学習データ取得
         $learning_gen = $this->service->getLearningDataFromKeyPhraseId($key_phrase['key_phrase_id']);
-        $statuses = Constant::getConstArray('common.disabled');
+        $statuses = Constant::getConstArray(__('const.common.disabled'));
         if ($this->service->checkHasOneKeyPhrase($learning_gen)) {
             unset($statuses[config('const.common.disabled.yes.id')]);
         }
@@ -175,7 +175,7 @@ class KeyPhraseController extends Controller
             $request->session()->regenerateToken();
             $this->service->getRepository()->update($id, $request->all());
             //修正ログ
-            $this->service->saveLog(config('const.function.' . self::ROUTE_NAME . '_update.id'));
+            $this->service->saveLog(__('const.function.' . self::ROUTE_NAME . '_update.id'));
             return $this->complete($request);
         } else {
             $redirect = redirect()->route(self::ROUTE_NAME . '.edit', ['key_phrase' => $id]);

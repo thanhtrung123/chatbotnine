@@ -11,16 +11,16 @@
                 <div class="row">
                     <div class="col-10">
                     <h1>
-                        {{__('const.bot_title')}}
+                        {{__('bot.const.bot_title')}}
                         @if(!empty(auth()->user()) && $disp_info )
                             <span style="font-size: 70%;">
                             {{--                        &nbsp;({{__('管理者モード')}})&nbsp;--}}
-                            <label>{{_('const.情報メッセージを表示する')}}<input type="checkbox" id="disp_info" checked></label>
+                            <label>{{__('const.情報メッセージを表示する')}}<input type="checkbox" id="disp_info" checked></label>
                         </span>
                         @endif
                     </h1>
                     <p id="request">
-                        <a href="javascript:void(0);" id="bot_reset_btn">{{__('const.bot_symbol_reset')}}</a>
+                        <a href="javascript:void(0);" id="bot_reset_btn">{{__('bot.const.bot_symbol_reset')}}</a>
                     </p>
                 </div>
                     <div class="dropdown show col-2">
@@ -54,8 +54,8 @@
                             </a>
                         @endif
                     </div>
-                    <input id="txt_input" type="text" class="text" placeholder="{{__('const.bot_message_start')}}" required autocomplete="off" data-suggest='@json(['url'=>route('api.bot.suggest'),'wait'=>500])' />
-                    <button type="submit" class="btn-submit" id="button_submit"> {{__('const.送信')}} </button>
+                    <input id="txt_input" type="text" class="text" placeholder="{{__('bot.const.bot_message_start')}}" required autocomplete="off" data-suggest='@json(['url'=>route('api.bot.suggest'),'wait'=>500])' />
+                    <button type="submit" class="btn-submit" id="button_submit"> {{__('bot.const.送信')}} </button>
                 </form>
             </div>
         </div>
@@ -105,10 +105,10 @@
     <script>
         window.CHAT_BOT = {
             id: '{{ $chat_id }}',
-            bot_const: @json(__('const')),
+            bot_const: @json(__('bot.const')),
             init_data: @json($init_data),
             route: @json($route),
-            ua_status: @json(config('const.useragent.status')),
+            ua_status: @json(__('const.useragent.status')),
         };
     </script>
     @if ($voice_flg == TRUE AND $voice_api == TRUE && $browser_support_flg == TRUE)
@@ -123,11 +123,11 @@
                     FILL_STYLE: 'rgb(16, 16, 24)',
                     STROKE_STYLE: 'rgb(124, 224, 124)',
                 },
-                TIME_OUT : {{ config('bot.speech.timeout') }}
+                TIME_OUT : {{ __('bot.speech.timeout') }}
             }
             var voiceRecog;
             var timeout_id, transcript = '';
-            var max_time_out = {{ config('bot.speech.during') }};
+            var max_time_out = {{ __('bot.speech.during') }};
             var url_upload = "{{ route('speech.upload') }}";
             var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
         </script>

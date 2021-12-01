@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('admin.header.学習データ') .__('admin.修正'))
+@section('pageTitle', __('admin.header.training_data') .__('admin.edit'))
 @section('content')
     <div class="container">
         <div class="row">
@@ -14,12 +14,12 @@
                                         {{ Form::open(['url'=>route('admin.learning.update',['user'=>$id]),'method'=>'PUT','class'=>'form-horizontal','id'=>'entry_form']) }}
 
                                         <div id="confirm_area_1">
-                                            {{ Form::form_select('category_id',__('admin.learning.カテゴリ'), $category_data,true,['class'=>'select2']) }}
-                                            {{ Form::form_textarea('question',__('admin.learning.質問文章'),true,['required'=>true,'autofocus'=>true,'rows'=>3]) }}
-                                            {{ Form::form_textarea('answer',__('admin.learning.回答文章'),true,['required'=>true,'rows'=>6]) }}
-                                            {{ Form::form_text('metadata',__('admin.learning.メタデータ(仮)')) }}
+                                            {{ Form::form_select('category_id',__('admin.learning.category'), $category_data,true,['class'=>'select2']) }}
+                                            {{ Form::form_textarea('question',__('admin.learning.question_text'),true,['required'=>true,'autofocus'=>true,'rows'=>3]) }}
+                                            {{ Form::form_textarea('answer',__('admin.learning.answer_text'),true,['required'=>true,'rows'=>6]) }}
+                                            {{ Form::form_text('metadata',__('admin.learning.metadata')) }}
                                             @if(config('bot.truth.enabled'))
-                                                {{ Form::form_checkbox('auto_key_phrase_disabled',__('admin.learning.キーフレーズ設定'),['1'=>__('admin.learning.キーフレーズを手動で設定する')],true,['data-input-toggle'=>'#key_phrase_area']) }}
+                                                {{ Form::form_checkbox('auto_key_phrase_disabled',__('admin.learning.Key_phrase_setting'),['1'=>__('admin.learning.manually_set')],true,['data-input-toggle'=>'#key_phrase_area']) }}
                                             @endif
                                         </div>
 
@@ -68,7 +68,7 @@
                                                             {{--                                                                <b>優先度<br/>を指定</b>--}}
                                                             {{--                                                            </div>--}}
                                                             <div class="col-md-3 text-center">
-                                                                <b>{{__('admin.learning.優先度を指定/値')}}</b>
+                                                                <b>{{__('admin.learning.specify_priority')}}</b>
                                                             </div>
                                                             <div class="col-md-3">
                                                             </div>
@@ -105,9 +105,9 @@
                                                                         ];
                                                                     @endphp
                                                                     <div class="col-md-3" data-confirm-ignore="">
-                                                                        <input type="button" value="{{__('admin.変更')}}" class="btn btn-default" data-replace-input='@json($replace_input)'>
+                                                                        <input type="button" value="{{__('admin.change')}}" class="btn btn-default" data-replace-input='@json($replace_input)'>
 
-                                                                        <input type="button" value="{{__('admin.削除')}}" class="btn btn-default" data-dom-delete='@json(['target'=>'#key_phrase_block_'.$idx,'parent'=>'.key_phrase_block','limit'=>1])'>
+                                                                        <input type="button" value="{{__('admin.delete')}}" class="btn btn-default" data-dom-delete='@json(['target'=>'#key_phrase_block_'.$idx,'parent'=>'.key_phrase_block','limit'=>1])'>
                                                                     </div>
                                                                 </div>
                                                             @endforeach
@@ -129,10 +129,10 @@
                                         <div class="row">
                                             <div class="col-md-4"></div>
                                             <div class="col-md-2">
-                                                <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.確認')}}</button>
+                                                <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.submit')}}</button>
                                             </div>
                                             <div class="col-md-2">
-                                                <a class="btn btn-default btn-block" href="{{ route('admin.learning.index',['r'=>1]) }}">{{__('admin.戻る')}}</a>
+                                                <a class="btn btn-default btn-block" href="{{ route('admin.learning.index',['r'=>1]) }}">{{__('admin.cancel')}}</a>
                                             </div>
                                         </div>
 

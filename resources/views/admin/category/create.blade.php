@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('admin.header.カテゴリ').__('admin.登録'))
+@section('pageTitle', __('admin.header.category').__('admin.create'))
 @section('content')
 <div class="container">
     <div class="row">
@@ -13,15 +13,15 @@
                                 <div class="col-md-10">
                                     {{ Form::open(['url'=>route('admin.category.store'),'method'=>'POST','class'=>'form-horizontal','id'=>'entry_form']) }}
 
-                                    {{ Form::form_text('name',__('admin.category.カテゴリ名'),true,['required'=>true,'autofocus'=>true]) }}
+                                    {{ Form::form_text('name',__('admin.category.category_name'),true,['required'=>true,'autofocus'=>true]) }}
 
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-2">
-                                            <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.確認')}}</button>
+                                            <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.submit')}}</button>
                                         </div>
                                         <div class="col-md-2">
-                                            <a class="btn btn-default btn-block" href="{{ route('admin.category.index') }}">{{__('admin.戻る')}}</a>
+                                            <a class="btn btn-default btn-block" href="{{ route('admin.category.index') }}">{{__('admin.cancel')}}</a>
                                         </div>
                                     </div>
 

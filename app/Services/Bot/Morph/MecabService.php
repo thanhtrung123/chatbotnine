@@ -33,7 +33,7 @@ class MecabService extends MorphAbstract
         $mecab_setting = [];
         if (isset($setting['main_dic'])) array_push($mecab_setting, '-d', $setting['main_dic']);
         if (isset($setting['user_dic'])) array_push($mecab_setting, '-u', $setting['user_dic']);
-        $this->mecab = new \MeCab\Tagger($mecab_setting);
+        // $this->mecab = new \MeCab\Tagger($mecab_setting);
         return $this;
     }
 

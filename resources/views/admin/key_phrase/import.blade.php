@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('admin.header.キーフレーズ').__('admin.インポート'))
+@section('pageTitle', __('admin.header.key_phrase').__('admin.import'))
 @section('content')
 <div class="container">
     <div class="row">
@@ -29,10 +29,10 @@
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-2">
-                                            <a class="btn btn-warning btn-block" href="{{ route('admin.key_phrase.import') }}">キャンセル</a>
+                                            <a class="btn btn-warning btn-block" href="{{ route('admin.key_phrase.import') }}">{{__('admin.cancel')}}</a>
                                         </div>
                                         <div class="col-md-2">
-                                            <button class="btn btn-primary btn-block" type="submit" name="store" value="0">登録</button>
+                                            <button class="btn btn-primary btn-block" type="submit" name="store" value="0">{{__('admin.register')}}</button>
                                         </div>
                                     </div>
                                     @else
@@ -41,14 +41,14 @@
                                             <strong>{{__('admin.key_phrase.!!注意!! 現状のキーフレーズデータはすべて削除されます（復元はできません）')}}</strong>
                                         </div>
                                     </div>
-                                    {{ Form::form_file('excel',__('admin.Excelファイル(.xlsx、.xls)'), '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
+                                    {{ Form::form_file('excel',__('admin.excel_file'), '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-2">
-                                            <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.インポート')}}</button>
+                                            <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.submit')}}</button>
                                         </div>
                                         <div class="col-md-2">
-                                            <a class="btn btn-default btn-block" href="{{ route('admin.key_phrase.index') }}">{{__('admin.戻る')}}</a>
+                                            <a class="btn btn-default btn-block" href="{{ route('admin.key_phrase.index') }}">{{__('admin.cancel')}}</a>
                                         </div>
                                     </div>
                                     @endif

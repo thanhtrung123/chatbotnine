@@ -2,7 +2,7 @@
     <div class="modal-content">
         <!-- Header -->
         <div class="modal-header">
-            <h4>シナリオ 登録</h4>
+            <h4>{{__('admin.scenario.scenario')}} {{__('admin.register')}}</h4>
         </div>
         <!-- Body -->
         <div class="modal-body">
@@ -11,7 +11,7 @@
                     {{ Form::open(['url'=>route('admin.scenario.store'),'method'=>'POST','class'=>'form-horizontal','id'=>'formScenario']) }}
                         <div class="row form-group">
                             <div class="col-md-4 control-label">
-                                {{ Form::label('category', 'カテゴリ') }}
+                                {{ Form::label('category', __('admin.header.category')) }}
                             </div>
                             <div class="col-md-8">
                                 {{ Form::select('category_id', ['' => 'なし'] + $categories, '' ,['class' => 'form-control select2 scenarioCategory', 'data-width' => '100%', 'id' => 'category_id', 'disabled']) }}
@@ -19,7 +19,7 @@
                         </div>
                         <div class="row form-group">
                             <div class="col-md-4 control-label">
-                                {{ Form::label('category', 'シナリオ') }}
+                                {{ Form::label('category', __('admin.scenario.scenario')) }}
                             </div>
                             <div class="col-md-8">
                                 {{ Form::text('name', '' ,['class' => 'form-control', 'id' => 'nameScenario']) }}
@@ -27,7 +27,7 @@
                         </div>
                         <div class="row form-group">
                             <div class="col-md-4 control-label">
-                                {{ Form::label('category', '表示順') }}
+                                {{ Form::label('category',__('admin.learning_relation.display_order')) }}
                             </div>
                             <div class="col-md-8">
                                 {{ Form::text('order', '' ,['class' => 'form-control order', 'id'=> 'order']) }}
@@ -44,13 +44,13 @@
                                         <input type="hidden" class="clone_idx" value="%idx%">
                                     </div>
                                     <div class="col-md-2" data-confirm-ignore="">
-                                        <input type="button" value="削除" class="btn btn-default" data-dom-delete='@json(['target'=>'#keyword_block_%idx%','parent'=>'.keyword_block','limit'=>0])'>
+                                        <input type="button" value="{{__('admin.delete')}}" class="btn btn-default" data-dom-delete='@json(['target'=>'#keyword_block_%idx%','parent'=>'.keyword_block','limit'=>0])'>
                                     </div>
                                 </div>
                             </template>
                             <div class="form-group">
                                 <div class="col-md-4 control-label">
-                                    {{ Form::label('keyword', '関連キーワード') }}
+                                    {{ Form::label('keyword', __('admin.scenario.related_keywords')) }}
                                 </div>
                                 <div class="col-md-8">
                                     <div id="clone_area" class="keyword-add-scenario">
@@ -83,7 +83,7 @@
                                         @php
                                             $add=['src'=>'#clone_src','area'=>'#clone_area','idx_src'=>'.clone_idx']
                                         @endphp
-                                        <input type="button" id="keyword_add_btn" value="追加" class="btn btn-default" data-dom-add-select2='@json($add)'>
+                                        <input type="button" id="keyword_add_btn" value="{{__('admin.create')}}" class="btn btn-default" data-dom-add-select2='@json($add)'>
                                     </div>
                                 </div>
                             </div>
@@ -92,8 +92,8 @@
                 </div>
             </div>
             <div class="modal-footer modal-footer--mine">
-                    <button type="button" class="btn btn-primary add-node-element-scenario">確認</button>
-                    <button type="button" class="btn btn-default closeModalAddSc" data-dismiss="modal">閉じる</button>
+                    <button type="button" class="btn btn-primary add-node-element-scenario">{{__('admin.submit')}}</button>
+                    <button type="button" class="btn btn-default closeModalAddSc" data-dismiss="modal">{{__('admin.cancel')}}</button>
                 </div>
         </div>
     </div>

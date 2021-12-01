@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('admin.header.類義語データ').__('admin.インポート'))
+@section('pageTitle', __('admin.header.synonym_data').__('admin.import'))
 @section('content')
 <div class="container">
     <div class="row">
@@ -41,14 +41,14 @@
                                             <strong> {{__('admin.synonym.!!注意!! 現状の類義語データはすべて削除されます（復元はできません）')}}</strong>
                                         </div>
                                     </div>
-                                    {{ Form::form_file('excel',__('admin.Excelファイル(.xlsx、.xls)'), '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
+                                    {{ Form::form_file('excel',__('admin.excel_file'), '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-2">
-                                            <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.インポート')}}</button>
+                                            <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.import')}}</button>
                                         </div>
                                         <div class="col-md-2">
-                                            <a class="btn btn-default btn-block" href="{{ route('admin.synonym.index') }}">{{__('admin.戻る')}}</a>
+                                            <a class="btn btn-default btn-block" href="{{ route('admin.synonym.index') }}">{{__('admin.cancel')}}</a>
                                         </div>
                                     </div>
                                     @endif

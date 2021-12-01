@@ -21,8 +21,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary choice_select_button">選択</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                <button type="button" class="btn btn-primary choice_select_button">{{__('admin.execution')}}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{__('admin.cancel')}}</button>
             </div>
         </div>
     </div>

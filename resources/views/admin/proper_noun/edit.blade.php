@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('固有名詞') . ' 修正')
+@section('pageTitle', __('admin.proper_noun') .__('admin.edit'))
 @section('content')
     <div class="container">
         <div class="row">
@@ -12,7 +12,7 @@
                                 {{ Form::open(['url'=>route('admin.proper_noun.update',['user'=>$id]),'method'=>'PUT','class'=>'form-horizontal','id'=>'entry_form']) }}
                                 <div class="row">
                                     <div class="col-md-10" id="confirm_form_area">
-                                        {{ Form::form_text('word',__('固有名詞'),true,['required'=>true,'autofocus'=>true]) }}
+                                        {{ Form::form_text('word',__('admin.proper_noun.proper_noun'),true,['required'=>true,'autofocus'=>true]) }}
                                     </div>
                                 </div>
                                 <div class="row">
@@ -20,10 +20,10 @@
                                         <div class="row">
                                             <div class="col-md-4"></div>
                                             <div class="col-md-2">
-                                                <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">確認</button>
+                                                <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.submit')}}</button>
                                             </div>
                                             <div class="col-md-2">
-                                                <a class="btn btn-default btn-block" href="{{ route('admin.proper_noun.index',['r'=>1]) }}">戻る</a>
+                                                <a class="btn btn-default btn-block" href="{{ route('admin.proper_noun.index',['r'=>1]) }}">{{__('admin.cancel')}}</a>
                                             </div>
                                         </div>
                                     </div>

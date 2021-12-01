@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('admin.header.学習データ').__('admin.インポート'))
+@section('pageTitle', __('admin.header.training_data').__('admin.import'))
 @section('content')
     <div class="container">
         <div class="row">
@@ -39,17 +39,17 @@
                                         @else
                                             <div class="row bottom-buf10">
                                                 <div class="col-md-12 text-danger">
-                                                    <strong>{{__('admin.learning.!!注意!! 現状の学習データはすべて削除されます（復元はできません')}}</strong>
+                                                    <strong>{{__('admin.learning.!!注意!! 現状の学習データはすべて削除されます（復元はできません)')}}</strong>
                                                 </div>
                                             </div>
-                                            {{ Form::form_file('excel','Excel '.__('admin.learning.ファイル').'(.xlsx、.xls)', '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
+                                            {{ Form::form_file('excel',__('admin.excel_file'), '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
                                             <div class="row">
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-2">
-                                                    <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.インポート')}}</button>
+                                                    <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.submit')}}</button>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <a class="btn btn-default btn-block" href="{{ route('admin.learning.index') }}">{{__('admin.戻る')}}</a>
+                                                    <a class="btn btn-default btn-block" href="{{ route('admin.learning.index') }}">{{__('admin.cancel')}}</a>
                                                 </div>
                                             </div>
                                         @endif

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('admin.header.関連質問').__('admin.インポート'))
+@section('pageTitle', __('admin.header.related_questions').__('admin.import'))
 @section('content')
 <div class="container">
     <div class="row">
@@ -29,10 +29,10 @@
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-2">
-                                            <a class="btn btn-warning btn-block" href="{{ route('admin.learning_relation.import') }}">キャンセル</a>
+                                            <a class="btn btn-warning btn-block" href="{{ route('admin.learning_relation.import') }}">{{ __('admin.cancel') }}</a>
                                         </div>
                                         <div class="col-md-2">
-                                            <button class="btn btn-primary btn-block" type="submit" name="store" value="0">登録</button>
+                                            <button class="btn btn-primary btn-block" type="submit" name="store" value="0">{{ __('admin.register') }}</button>
                                         </div>
                                     </div>
                                     @else
@@ -41,14 +41,14 @@
                                             <strong>{{__('admin.learning_relation.!!注意!! 現状の関連質問はすべて削除されます（復元はできません）')}}</strong>
                                         </div>
                                     </div>
-                                    {{ Form::form_file('excel',__('admin.Excelファイル(.xlsx、.xls)'), '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
+                                    {{ Form::form_file('excel',__('admin.excel_file'), '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-2">
-                                            <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.インポート')}}</button>
+                                            <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.import')}}</button>
                                         </div>
                                         <div class="col-md-2">
-                                            <a class="btn btn-default btn-block" href="{{ route('admin.learning_relation.index') }}">{{__('admin.戻る')}}</a>
+                                            <a class="btn btn-default btn-block" href="{{ route('admin.learning_relation.index') }}">{{__('admin.cancel')}}</a>
                                         </div>
                                     </div>
                                     @endif

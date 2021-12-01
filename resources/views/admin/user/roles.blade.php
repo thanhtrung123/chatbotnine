@@ -1,5 +1,5 @@
 <div class="form-group" data-confirm data-other-checkbox>
-    <label class="col-md-4 control-label">{{__('admin.user.ロール設定')}}</label>
+    <label class="col-md-4 control-label">{{__('admin.user.role_setting')}}</label>
     <div class="col-md-8">
         @foreach($roles as $role => $role_ary)
         @if(isset($readonly) && $readonly == true)
