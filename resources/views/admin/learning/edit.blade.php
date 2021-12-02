@@ -58,7 +58,7 @@
                                         @if(config('bot.truth.enabled'))
                                             <div id="key_phrase_area">
                                                 <div class="form-group" id="key_phrase_confirm">
-                                                    <label for="name" class="col-md-4 control-label">{{ __('admin.learning.キーフレーズ') }}</label>
+                                                    <label for="name" class="col-md-4 control-label">{{ __('admin.learning.key_phrase') }}</label>
                                                     <div class="col-md-8">
 
                                                         <div class="row bottom-buf5">

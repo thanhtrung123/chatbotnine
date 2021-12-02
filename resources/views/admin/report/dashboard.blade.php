@@ -295,7 +295,7 @@
                                 @if (count($answer_state_data['quest_popular_list']) > 0)
                                 <div class="{{ (count($answer_state_data['quest_popular_list']) <= 10) ? 'result_answer' : 'result_answers'  }}">
                                     <div class="result_answer_disp">
-                                        <p class="result_answer_title"><strong>期間中に回答した回数が多い質問</strong></p>
+                                        <p class="result_answer_title"><strong>{{__('admin.report.answered_period')}}</strong></p>
                                     </div>
                                     <div class="result_answer_disp_show">
                                         <ol class="data-list">

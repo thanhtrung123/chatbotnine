@@ -23,7 +23,7 @@
                                     @if($isConfirm)
                                     <div class="row">
                                         <div class="col-md-12">
-                                           {{__('admin.learning_relation.問題ございません。<br/>このまま、関連質問を更新される場合、<br/>以下の登録ボタンをクリックしてください。')}}
+                                           {{__('admin.learning_relation.notification_message')}}
                                         </div>
                                     </div>
                                     <div class="row">
@@ -38,7 +38,7 @@
                                     @else
                                     <div class="row bottom-buf10">
                                         <div class="col-md-12 text-danger">
-                                            <strong>{{__('admin.learning_relation.!!注意!! 現状の関連質問はすべて削除されます（復元はできません）')}}</strong>
+                                            <strong>{{__('admin.learning_relation.warning_message')}}</strong>
                                         </div>
                                     </div>
                                     {{ Form::form_file('excel',__('admin.excel_file'), '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}

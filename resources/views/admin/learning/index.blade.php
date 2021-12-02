@@ -23,7 +23,7 @@
                                 <div class="row">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-2">
-                                        <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.検索')}}</button>
+                                        <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.search')}}</button>
                                     </div>
                                 </div>
                                 {{ Form::close() }}
@@ -58,7 +58,7 @@
                                         'chain' => $chain,
                                         'message' => [
                                             'title' => __('admin.learning.training_data').__('admin.learning.sync'),
-                                            'body' => __('admin.learning.チャットボットAPIに').__('admin.learning.training_data').__('admin.learning.を反映させます。').__('admin.learning.よろしければ、実行ボタンを押下してください。'),
+                                            'body' => __('admin.learning.for_chatbot_api').__('admin.learning.training_data').__('admin.learning.を反映させます。').__('admin.learning.よろしければ、実行ボタンを押下してください。'),
                                         ],
                                     ];
                                 @endphp

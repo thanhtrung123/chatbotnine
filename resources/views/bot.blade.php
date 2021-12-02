@@ -31,7 +31,6 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="{{route('language',['en'])}}">En</a>
                         <a class="dropdown-item" href="{{route('language',['ja'])}}">Ja</a>
-                        <a class="dropdown-item" href="{{route('language',['vi'])}}">Vi</a>
                         </div>
                     </div>
                 </div>
@@ -55,7 +54,7 @@
                         @endif
                     </div>
                     <input id="txt_input" type="text" class="text" placeholder="{{__('bot.const.bot_message_start')}}" required autocomplete="off" data-suggest='@json(['url'=>route('api.bot.suggest'),'wait'=>500])' />
-                    <button type="submit" class="btn-submit" id="button_submit"> {{__('bot.const.送信')}} </button>
+                    <button type="submit" class="btn-submit" id="button_submit"> {{__('admin.send')}} </button>
                 </form>
             </div>
         </div>

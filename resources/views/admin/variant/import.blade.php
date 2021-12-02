@@ -23,22 +23,22 @@
                                     @if($isConfirm)
                                     <div class="row">
                                         <div class="col-md-12">
-                                            {{__('admin.variant.問題ございません。<br/>このまま、異表記データを更新される場合、<br/>以下の登録ボタンをクリックしてください')}}
+                                            {{__('admin.variant.notification_message')}}
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-2">
-                                            <a class="btn btn-warning btn-block" href="{{ route('admin.variant.import') }}">{{__('admin.キャンセル')}}</a>
+                                            <a class="btn btn-warning btn-block" href="{{ route('admin.variant.import') }}">{{__('admin.cancel')}}</a>
                                         </div>
                                         <div class="col-md-2">
-                                            <button class="btn btn-primary btn-block" type="submit" name="store" value="0">{{__('admin.登録')}}</button>
+                                            <button class="btn btn-primary btn-block" type="submit" name="store" value="0">{{__('admin.register')}}</button>
                                         </div>
                                     </div>
                                     @else
                                     <div class="row bottom-buf10">
                                         <div class="col-md-12 text-danger">
-                                            <strong>{{__('admin.variant.!!注意!! 現状の異表記データはすべて削除されます（復元はできません）')}}</strong>
+                                            <strong>{{__('admin.variant.warning_message')}}</strong>
                                         </div>
                                     </div>
                                     {{ Form::form_file('excel',__('admin.excel_file'), '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}

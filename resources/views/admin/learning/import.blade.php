@@ -23,23 +23,22 @@
                                         @if($isConfirm)
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    {{__('問題ございません。')}}<br/>
-                                                    {{__('このまま、学習データを更新される場合、以下の登録ボタンをクリックしてください')}}
+                                                    {{__('admin.learning.notification_message')}}
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-2">
-                                                    <a class="btn btn-warning btn-block" href="{{ route('admin.learning.import') }}">{{__('admin.キャンセル')}}</a>
+                                                    <a class="btn btn-warning btn-block" href="{{ route('admin.learning.import') }}">{{__('admin.register')}}</a>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <button class="btn btn-primary btn-block" type="submit" name="store" value="0"{{__('admin.登録')}}></button>
+                                                    <button class="btn btn-primary btn-block" type="submit" name="store" value="0"{{__('admin.cancel')}}></button>
                                                 </div>
                                             </div>
                                         @else
                                             <div class="row bottom-buf10">
                                                 <div class="col-md-12 text-danger">
-                                                    <strong>{{__('admin.learning.!!注意!! 現状の学習データはすべて削除されます（復元はできません)')}}</strong>
+                                                    <strong>{{__('admin.learning.warning_message')}}</strong>
                                                 </div>
                                             </div>
                                             {{ Form::form_file('excel',__('admin.excel_file'), '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
