@@ -60,7 +60,7 @@ return [
         'bot_status_show_hint' => 'show_hint',                          // 質問の選択肢中の「この中にない」を選択
         'bot_status_chat_call' => 'chat_call',                          // チャット呼び出し
 
-        //結果ステータス
+        //結果ステータス 
         'bot_result_status_answer' => 'result_answer',          //回答
         'bot_result_status_feedback' => 'result_feedback',      //フィードバック
         'bot_result_status_yn' => 'result_yn',                  //「はい・いいえ」の選択肢（質問）
@@ -111,12 +111,12 @@ return [
         //button class
         'bot_button_classes' => [
             'select_feedback' => [
-                'はい' => 'answers-settled',
-                'いいえ' => 'answers-resolve',
+                'yes' => 'answers-settled',
+                'no' => 'answers-resolve',
             ],
             'select' => [
-                'はい' => 'col-6',
-                'いいえ' => 'col-6',
+                'yes' => 'col-6',
+                'no' => 'col-6',
             ],
         ],
         //dialog

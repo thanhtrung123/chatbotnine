@@ -12,7 +12,7 @@
                         {{ Form::hidden('confirm', old('confirm'), ['class' => 'confirm'])}}
                         {{ Form::hidden('export-zip', old('export-zip'), ['class' => 'export-zip'])}}
                         <div class="form-group text-center">
-                            {{__('シナリオデータ（バックアップ用）からダウンロードしたZIPファイルを指定してください。')}}
+                            {{__('admin.modal.specify_the_zip')}}
                         </div>
                         <div class="row form-group">
                             <div class="col-md-2 control-label">
@@ -40,14 +40,14 @@
                             <div class="col-md-2 control-label">
                             </div>
                             <div class="col-md-10">
-                                <button type="submit" id="export-excel" class="btn btn-iexport-sm btn-lg btn-block" title="シナリオ一覧（閲覧用）ダウンロード"> {{__('シナリオ一覧（閲覧用）ダウンロード')}}</button>
+                                <button type="submit" id="export-excel" class="btn btn-iexport-sm btn-lg btn-block" title="シナリオ一覧（閲覧用）ダウンロード"> {{__('admin.modal.scenario_list')}}</button>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-2 control-label">
                             </div>
                             <div class="col-md-10">
-                                <button type="submit" id="download-zip" class="btn btn-iexport-sm btn-lg btn-block" title="シナリオデータ（バックアップ用）ダウンロード"> {{__('シナリオデータ（バックアップ用）ダウンロード')}}</button>
+                                <button type="submit" id="download-zip" class="btn btn-iexport-sm btn-lg btn-block" title="シナリオデータ（バックアップ用）ダウンロード"> {{__('admin.modal.download_scenario_data')}}</button>
                             </div>
                         </div>
                     {{ Form::close() }}
