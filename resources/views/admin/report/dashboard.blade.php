@@ -320,7 +320,7 @@
                                 @if (count($answer_state_data['quest_popular_no_list']) > 0)
                                 <div class="{{ (count($answer_state_data['quest_popular_no_list']) <= 10) ? 'result_answer' : 'result_answers'  }}">
                                     <div class="result_answer_disp">
-                                        <p class="result_answer_title"><strong>回答ができなかった質問</strong></p>
+                                        <p class="result_answer_title"><strong>{{__('admin.report.Questions_could_not_ans')}}</strong></p>
                                     </div>
                                     <div class="result_answer_disp_show">
                                         <ol class="data-list">

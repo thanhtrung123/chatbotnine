@@ -62,9 +62,9 @@
                                         <th data-template="true">
                                             <template>
                                                 @if(auth()->user()->can('synonym edit'))
-                                                    <a class="btn btn-default" href="{{ route('admin.synonym.edit',['user'=>'%id%']) }}">{{__('admin.修正')}}</a>
+                                                    <a class="btn btn-default" href="{{ route('admin.synonym.edit',['user'=>'%id%']) }}">{{__('admin.edit')}}</a>
                                                 @else
-                                                    <a class="btn btn-default" disabled="">{{__('admin.修正')}}</a>
+                                                    <a class="btn btn-default" disabled="">{{__('admin.edit')}}</a>
                                                 @endif
                                                 @if(auth()->user()->can('synonym destroy'))
                                                     <a class="btn btn-default" data-modal='@json([
@@ -72,7 +72,7 @@
                                                 'params' => ['action'=>route('admin.synonym.destroy',['synonym'=>'%id%'])]
                                                 ])'>{{__('admin.削除')}}</a>
                                                 @else
-                                                    <a class="btn btn-default" disabled="">{{__('admin.削除')}}</a>
+                                                    <a class="btn btn-default" disabled="">{{__('admin.delete')}}</a>
                                                 @endif
                                             </template>
                                         </th>

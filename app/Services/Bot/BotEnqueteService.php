@@ -72,7 +72,7 @@ class BotEnqueteService
      */
     public function getFormDataFromHash($form_hash, $enquete_key = null)
     {
-        $form_settings = config('enquete.form');
+        $form_settings = __('enquete.form');
         $form_id = null;
         $form_setting = [];
         foreach ($form_settings as $id => $setting) {

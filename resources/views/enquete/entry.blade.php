@@ -68,7 +68,7 @@
 
                 <div class="btn-submit-question">
                     <p class="submit_question">
-                        <button type="submit">送信</button>
+                        <button type="submit">{{__('admin.submit')}}</button>
                     </p>
                 </div>
 
@@ -79,7 +79,7 @@
                 {{ Form::close() }}
 
                 <div class="thanks-question-txt">
-                    <p>ご協力ありがとうございました。</p>
+                    <p>{{__('enquete.text.thanks_help')}}</p>
                 </div>
             </div>
         </div>
