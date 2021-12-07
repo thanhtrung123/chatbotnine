@@ -662,7 +662,7 @@ class ResponseInfoRepository extends AbstractRepository implements ResponseInfoR
         if ($channel) {
             $query = $query->where('channel', $channel);
         }
-        $query = $query->limit(('const.dashboard.limit_answers'))->get();
+        $query = $query->limit(config('const.dashboard.limit_answers'))->get();
         return $query;
     }
 }
