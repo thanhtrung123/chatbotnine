@@ -33,7 +33,7 @@
                                             @php
                                                 $confirm = ['message'=>"メンテナンスモードに切り替えると、全ページメンテナンス中となります。\n解除にはコンソールでの操作が必要なので注意してください。"];
                                             @endphp
-                                            <div class="panel-footer"><a class="btn btn-default" href="{{ route('admin.tools.common',['mode'=>'maintenance']) }}" data-button-confirm='@json($confirm)'>実行</a></div>
+                                            <div class="panel-footer"><a class="btn btn-default" href="{{ route('admin.tools.common',['mode'=>'maintenance']) }}" data-button-confirm='@json($confirm)'>{{__('admin.execution')}}</a></div>
                                         </div>
 
                                     </div>

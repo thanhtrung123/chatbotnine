@@ -122,11 +122,11 @@
                     FILL_STYLE: 'rgb(16, 16, 24)',
                     STROKE_STYLE: 'rgb(124, 224, 124)',
                 },
-                TIME_OUT : {{ __('bot.speech.timeout') }}
+                TIME_OUT : {{ config('bot.speech.timeout') }}
             }
             var voiceRecog;
             var timeout_id, transcript = '';
-            var max_time_out = {{ __('bot.speech.during') }};
+            var max_time_out = {{ config('bot.speech.during') }};
             var url_upload = "{{ route('speech.upload') }}";
             var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
         </script>

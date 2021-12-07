@@ -89,7 +89,7 @@ return [
             'service' => App\Services\Bot\Morph\MecabService::class,
             'main_dic' => '/opt/mecab/lib/mecab/dic/neologd',
             // MeCab用辞書ファイル（「mecab-ipadic-neologd」を使用）
-//            'main_dic' => '/usr/lib64/mecab/dic/mecab-ipadic-neologd',
+        //            'main_dic' => '/usr/lib64/mecab/dic/mecab-ipadic-neologd',
             'user_dic' => resource_path('dic/original.dic'),
             //依存キーワード（上書き用）
             'keywords' => [
@@ -354,4 +354,10 @@ return [
         'sampling_rate' => 16000,
         'url_speech_azure' => 'https://'.env('API_SPEECH_REGION').'.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=ja-JP.'
     ],
+    'message' => [
+        'scenario_file_empty' => 'ファイルが選択されていません。',
+        'scenario_download_zip_fail' => 'zipシナリオのダウンロードが失敗しました。',
+        'scenario_upload_error' => 'シナリオ復元に失敗しました。<br />シナリオデータ(バックアップ用)ダウンロードで作成したファイルを選択してください。',
+        'scenario_upload_zip_error' => 'シナリオデータ(バックアップ用)ダウンロードで作成したZIPファイルを選択してください。',
+    ]
 ];

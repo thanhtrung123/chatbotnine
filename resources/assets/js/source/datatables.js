@@ -448,36 +448,17 @@
      * 初期化
      */
     base.dataTables.init = () => {
-        let datatables_language = {
-            "emptyTable": "データが登録されていません。",
-            "info": " 全_TOTAL_ 件中 _START_ ～ _END_ 件  表示",
-            "infoEmpty": " 0 件中 0 から 0 まで表示",
-            "infoFiltered": "（全 _MAX_ 件より抽出）",
-            "infoPostFix": "",
-            "thousands": ",",
-            "lengthMenu": "_MENU_ 件表示",
-            "loadingRecords": "ロード中",
-//             "processing": "<div class='datatable-loading'><img src='/assets/img/loader.gif'> 処理中...</div>",
-//             processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> ',
-            "search": "検索",
-            "zeroRecords": "データはありません。",
-            "paginate": {
-                "first": "先頭",
-                "previous": "<<",
-                "next": ">>",
-                "last": "末尾"
-            }
-        };
         base.dataTables.config = {};
+        console.log(Laravel.lang);
         base.dataTables.config.default = {
             "order": [0, 'desc'],
-            "language": datatables_language,
+            "language": Laravel.lang,
             // dom: "<'container-fluid datatable-item'<'col-sm-6 inline-flex'il><'col-sm-6'f>>" +
             //     "<'x-scroll-auto'<'w-100p'tr>>" +
             //     "<'w-100p text-center'p>"
         };
         base.dataTables.config.column = {
-            "language": datatables_language,
+            "language": Laravel.lang,
             ordering: false,
             // dom: "<'container-fluid datatable-item'<'col-sm-6 inline-flex'il><'col-sm-6'f>>" +
             //     "<'x-scroll-auto'<'w-100p'tr>>" +

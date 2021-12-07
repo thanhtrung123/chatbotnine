@@ -14,7 +14,8 @@
     @yield('cssfiles')
     <script> window.Laravel = {!! json_encode([
         'apiToken' => \Auth::user()->api_token ?? null,
-        'route'=>['login'=>route('login')]
+        'route'=>['login'=>route('login')],
+        'lang'=>__('datatable'),
     ]) !!};</script>
     @include('layouts.parts.common_config')
     <script src="{{ asset(mix('js/admin.js')) }}"></script>

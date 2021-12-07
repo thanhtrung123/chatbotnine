@@ -40,7 +40,6 @@ return [
     'input_confirm'=>"Input confirmation",
     'delete_confirm'=>"Deletion confirmation",
     'verification'=>"Verification",
-    'verification'=>"Verification",
     'totalling'=>"totalling",
     'restore'=>"Restore",
     'import_confirm'=>"Import confirmation",
@@ -238,8 +237,8 @@ return [
         'aggregation_channel'=>"Aggregation channel",
         'aggregate_exclusion_ip'=>"Aggregate exclusion IP",
         'conversation_average'=>"1 Conversation average:",
-        'answer_status'=>"Answer status"
-
+        'answer_status'=>"Answer status",
+        'Questions_could_not_ans'=>"Questions that could not be answered"
     ],
     'scenario' => [
         'add_scenario'=>"Add scenario",      
@@ -265,5 +264,11 @@ return [
         "download_scenario_data"=>"Download scenario data (for backup)",
         "warning_mess"=>"!! !! caution! !! All current scenario data will be deleted. \n If you want to restore the scenario data as it is, click the restore button below."
     ],
-
+    'tool'=>[
+        "back_others"=>"裏ツール その他",
+        "specify_the_zip"=> "Specify the ZIP file downloaded from the scenario data (for backup).",
+        "scenario_list"=>"Scenario list (for viewing) Download",
+        "download_scenario_data"=>"Download scenario data (for backup)",
+        "warning_mess"=>"!! !! caution! !! All current scenario data will be deleted. \n If you want to restore the scenario data as it is, click the restore button below."
+    ],
 ];	
