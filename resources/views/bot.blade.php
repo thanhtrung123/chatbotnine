@@ -23,14 +23,14 @@
                         <a href="javascript:void(0);" id="bot_reset_btn">{{__('bot.const.bot_symbol_reset')}}</a>
                     </p>
                 </div>
-                    <div class="dropdown show col-2">
+                    <div class="dropdown show col-2 language">
                         <a class="btn text-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{__('Language')}}
+                        {{__('admin.language')}}
                         </a>
                     
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="{{route('language',['en'])}}">En</a>
-                        <a class="dropdown-item" href="{{route('language',['ja'])}}">Ja</a>
+                            <a class="dropdown-item en" href="{{route('language',['en'])}}">{{__('admin.en')}}</a>
+                            <a class="dropdown-item ja" href="{{route('language',['ja'])}}">{{__('admin.ja')}}</a>
                         </div>
                     </div>
                 </div>

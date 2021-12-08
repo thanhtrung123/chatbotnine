@@ -323,7 +323,7 @@ return [
         'bot_symbol_not' => '×',
         'bot_symbol_other_hint' => 'Show other options',
         'bot_symbol_not_in' => 'Not applicable',
-        'bot_symbol_reset' => 'Ask a new question',
+        'bot_symbol_reset' => 'Clear Filter',
         'bot_symbol_chat_call' => 'Connect to the operator (open in a new window)',
         'bot_symbol_enquete' => 'Answer the questionnaire (open in a new window)',
         //string

@@ -323,7 +323,7 @@ return [
         'bot_symbol_not' => '×',
         'bot_symbol_other_hint' => 'ほかの選択肢を表示',
         'bot_symbol_not_in' => '該当するものがありません',
-        'bot_symbol_reset' => '新しい質問をする',
+        'bot_symbol_reset' => 'フィルターをクリア',
         'bot_symbol_chat_call' => 'オペレーターにつなぐ（別ウィンドウで開く）',
         'bot_symbol_enquete' => 'アンケートに回答する（別ウィンドウで開く）',
         //string

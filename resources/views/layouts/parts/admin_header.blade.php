@@ -13,7 +13,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" style="font-weight: bold;" href="{{ route('admin') }}">
-                {{ config('app.name', 'Laravel') }}
+                
             </a>
         </div>
 
@@ -101,17 +101,16 @@
                 @endguest
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
+                <li class="dropdown language">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-expanded="false" aria-haspopup="true" v-pre>
-                       {{__('Language')}}
+                       {{__('admin.language')}}
                     </a>
 
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="dropdown-item" href="{{route('language',['en'])}}">En</a>
-                            <a class="dropdown-item" href="{{route('language',['ja'])}}">Ja</a>
-                            <a class="dropdown-item" href="{{route('language',['vi'])}}">Vi</a>
+                            <a class="dropdown-item flag en" href="{{route('language',['en'])}}">{{__('admin.en')}}</a>
+                            <a class="dropdown-item flag ja" href="{{route('language',['ja'])}}">{{__('admin.ja')}}</a>
                         </li>
                     </ul>
                 </li>

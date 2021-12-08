@@ -12,6 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'language'=>'言語',
+    'en'=>'英語',
+    'ja'=>'日本',
     'list'=>" 一覧",
     'import'=>" インポート",
     'export'=>"エクスポート",
