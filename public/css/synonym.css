@@ -1,0 +1,15 @@
+@keyframes glowing {
+    0% { background:#FFB6C1 }
+    40% { background: #FFF; color:black; }
+    60% { background: #FFF; color:black; }
+    100% { background:#F08080 }
+}
+
+.button-glow {
+    background-color: #fff;
+    border-color: #ccc;
+    color: #FFF;
+    -webkit-animation: glowing 1s ease-in-out infinite alternate;
+    -moz-animation: glowing 1s ease-in-out infinite alternate;
+    animation: glowing 2s ease-in-out infinite alternate;
+}
