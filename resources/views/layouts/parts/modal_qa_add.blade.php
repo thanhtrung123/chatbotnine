@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-lg">
     <div class="modal-content qa-modal">
         <div class="modal-header">
-            <h4>QA登録</h4>
+            <h4>{{__('admin.scenario.qa_data')}}</h4>
         </div>
             <div class="modal-body">
             {{ Form::open(['class'=>'form-horizontal','id'=>'search_form']) }}
@@ -17,7 +17,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-md-3 control-label">
-                            {{ Form::label('qaKeyword', 'キーワード') }}
+                            {{ Form::label('qaKeyword', __('admin.keyword')) }}
                         </div>
                         <div class="col-md-8">
                             {{ Form::text('keyword', '' ,['class' => 'form-control qaKeyword']) }}
@@ -25,14 +25,14 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-md-3 control-label">
-                            {{ Form::label('qaCategory', 'カテゴリ') }}
+                            {{ Form::label('qaCategory', __('admin.header.category')) }}
                         </div>
                         <div class="col-md-8">
                             {{ Form::select('category_id', ['' => 'なし'] + $categories, '' ,['class' => 'form-control select2 qaCategory', 'data-width' => '100%',]) }}
                         </div>
                     </div>
                     <div class="row text-center">
-                        <button type="button" class="btn btn-primary qa-seach"><i class="fa fa-search"> 検索 </i></button>
+                        <button type="button" class="btn btn-primary qa-seach"><i class="fa fa-search"> {{__('admin.search')}}</i></button>
                     </div>
                 </div>
             </div>
@@ -42,9 +42,9 @@
                         <thead>
                             <tr>
                                 {{-- <th class="text-center">QA_ID</th> --}}
-                                <th class="text-center api_id_qa">QA_ID</th>
-                                <th class="text-center">質問文章</th>
-                                <th class="text-center">回答文章</th>
+                                <th class="text-center api_id_qa">{{__('admin.scenario.qa_id')}}</th>
+                                <th class="text-center">{{__('admin.scenario.question_text')}}</th>
+                                <th class="text-center">{{__('admin.scenario.answer_text')}}</th>
                                 <th class="text-center"></th>
                             </tr>
                         </thead>
@@ -57,7 +57,7 @@
             {{ Form::close() }}
         </div>
         <div class="modal-footer-center modal-footer--mine">
-            <button type="button" class="btn btn-default closeModalQa" data-dismiss="modal">閉じる</button>
+            <button type="button" class="btn btn-default closeModalQa" data-dismiss="modal">{{__('admin.cancel')}}</button>
         </div>
     </div>
 </div>

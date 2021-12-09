@@ -1,5 +1,5 @@
 @extends('layouts.bot')
-@section('pageTitle', __(config('bot.const.bot_title')))
+@section('pageTitle', __('bot.const.bot_title'))
 @php
     $voice_flg = config('bot.speech.enabled');
     $voice_api = env('API_SPEECH_ENABLE', false);
@@ -8,19 +8,34 @@
     <div id="wrapper">
         <div id="header">
             <div class="container">
-                <h1>
-                    {{__(config('bot.const.bot_title'))}}
-                    @if(!empty(auth()->user()) && $disp_info )
-                        <span style="font-size: 70%;">
-{{--                        &nbsp;({{__('管理者モード')}})&nbsp;--}}
-                        <label>情報メッセージを表示する<input type="checkbox" id="disp_info" checked></label>
-                    </span>
-                    @endif
-                </h1>
-                <p id="request">
-                    <a href="javascript:void(0);" id="bot_reset_btn">{{__(config('bot.const.bot_symbol_reset'))}}</a>
-                </p>
+                <div class="row">
+                    <div class="col-10">
+                    <h1>
+                        {{__('bot.const.bot_title')}}
+                        @if(!empty(auth()->user()) && $disp_info )
+                            <span style="font-size: 70%;">
+                            {{--                        &nbsp;({{__('管理者モード')}})&nbsp;--}}
+                            <label>{{__('const.情報メッセージを表示する')}}<input type="checkbox" id="disp_info" checked></label>
+                        </span>
+                        @endif
+                    </h1>
+                    <p id="request">
+                        <a href="javascript:void(0);" id="bot_reset_btn">{{__('bot.const.bot_symbol_reset')}}</a>
+                    </p>
+                </div>
+                    <div class="dropdown show col-2 language">
+                        <a class="btn text-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{__('admin.language')}}
+                        </a>
+                    
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item en" href="{{route('language',['en'])}}">{{__('admin.en')}}</a>
+                            <a class="dropdown-item ja" href="{{route('language',['ja'])}}">{{__('admin.ja')}}</a>
+                        </div>
+                    </div>
+                </div>
             </div>
+           
         </div>
         <div id="main-content">
             <div class="container">
@@ -38,8 +53,8 @@
                             </a>
                         @endif
                     </div>
-                    <input id="txt_input" type="text" class="text" placeholder="{{__('質問を入力してください')}}" required autocomplete="off" data-suggest='@json(['url'=>route('api.bot.suggest'),'wait'=>500])' />
-                    <button type="submit" class="btn-submit" id="button_submit"> 送信 </button>
+                    <input id="txt_input" type="text" class="text" placeholder="{{__('bot.const.bot_message_start')}}" required autocomplete="off" data-suggest='@json(['url'=>route('api.bot.suggest'),'wait'=>500])' />
+                    <button type="submit" class="btn-submit" id="button_submit"> {{__('admin.send')}} </button>
                 </form>
             </div>
         </div>
@@ -89,10 +104,10 @@
     <script>
         window.CHAT_BOT = {
             id: '{{ $chat_id }}',
-            bot_const: @json(output_config_json('bot.const')),
+            bot_const: @json(__('bot.const')),
             init_data: @json($init_data),
             route: @json($route),
-            ua_status: @json(config('const.useragent.status')),
+            ua_status: @json(__('const.useragent.status')),
         };
     </script>
     @if ($voice_flg == TRUE AND $voice_api == TRUE && $browser_support_flg == TRUE)

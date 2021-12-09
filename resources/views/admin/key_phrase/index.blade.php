@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('キーフレーズ').' 一覧')
+@section('pageTitle', __('admin.header.key_phrase').__('admin.list'))
 @section('content')
     <div class="container">
         <div class="row">
@@ -11,12 +11,12 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 {{ Form::open(['class'=>'form-horizontal','id'=>'search_form']) }}
-                                {{ Form::form_text('keyword','キーワード',false,['autofocus'=>true]) }}
-                                {{ Form::form_checkbox('disabled[]','状態',$statuses) }}
+                                {{ Form::form_text('keyword',__('admin.key_phrase.key_phrase'),false,['autofocus'=>true]) }}
+                                {{ Form::form_checkbox(__('admin.disabled[]'),__('admin.key_phrase.status'),$statuses) }}
                                 <div class="row">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-2">
-                                        <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">検索</button>
+                                        <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.search')}}</button>
                                     </div>
                                 </div>
                                 {{ Form::close() }}
@@ -27,19 +27,19 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 @if(auth()->user()->can('key_phrase create'))
-                                    <a class="btn btn-block btn-default" href="{{ route('admin.key_phrase.create') }}">新規追加</a>
+                                    <a class="btn btn-block btn-default" href="{{ route('admin.key_phrase.create') }}">{{__('admin.create')}}</a>
                                 @else
-                                    <a class="btn btn-block btn-default" disabled="">新規追加</a>
+                                    <a class="btn btn-block btn-default" disabled="">{{__('admin.create')}}</a>
                                 @endif
                                 @if(auth()->user()->can('key_phrase import'))
-                                    <a class="btn btn-block btn-default" href="{{ route('admin.key_phrase.import') }}">インポート</a>
+                                    <a class="btn btn-block btn-default" href="{{ route('admin.key_phrase.import') }}">{{__('admin.import')}}</a>
                                 @else
-                                    <a class="btn btn-block btn-default" disabled="">インポート</a>
+                                    <a class="btn btn-block btn-default" disabled="">{{__('admin.import')}}</a>
                                 @endif
                                 @if(auth()->user()->can('key_phrase export'))
-                                    <a class="btn btn-block btn-default" href="{{ route('admin.key_phrase.export') }}">エクスポート</a>
+                                    <a class="btn btn-block btn-default" href="{{ route('admin.key_phrase.export') }}">{{__('admin.export')}}</a>
                                 @else
-                                    <a class="btn btn-block btn-default" disabled="">エクスポート</a>
+                                    <a class="btn btn-block btn-default" disabled="">{{__('admin.export')}}</a>
                                 @endif
                             </div>
                         </div>
@@ -58,19 +58,19 @@
                                    ])'>
                                     <thead>
                                     <tr>
-                                        <th data-name="cnt">件数</th>
+                                        <th data-name="cnt">{{__('admin.key_phrase.nunber')}}</th>
                                         <th data-name="key_phrase_id">ID</th>
-                                        <th data-name="word">{{ __('キーフレーズ') }}</th>
-                                        <th data-name="replace_word">置換後文字</th>
-                                        <th data-name="priority">優先度</th>
-                                        <th data-name="type">タイプ</th>
-                                        <th data-name="disabled">状態</th>
+                                        <th data-name="word">{{__('admin.key_phrase.key_phrase')}}</th>
+                                        <th data-name="replace_word">{{__('admin.key_phrase.text_after_rep')}}</th>
+                                        <th data-name="priority">{{__('admin.key_phrase.priority')}}</th>
+                                        <th data-name="type">{{__('admin.key_phrase.type')}}</th>
+                                        <th data-name="disabled">{{__('admin.key_phrase.status')}}</th>
                                         <th data-template="true">
                                             <template>
                                                 @if(auth()->user()->can('key_phrase edit'))
-                                                    <a class="btn btn-default" href="{{ route('admin.key_phrase.edit',['key_phrase'=>'%id%']) }}">修正</a>
+                                                    <a class="btn btn-default" href="{{ route('admin.key_phrase.edit',['key_phrase'=>'%id%']) }}">{{__('admin.edit')}}</a>
                                                 @else
-                                                    <a class="btn btn-default" disabled="">修正</a>
+                                                    <a class="btn btn-default" disabled="">{{__('admin.edit')}}</a>
                                                 @endif
 
                                                 {{--                                                @php--}}
@@ -86,9 +86,9 @@
                                                     <a class="btn btn-default del_btn" data-modal='@json([
                                                 'type' => 'delete',
                                                 'params' => ['action'=>route('admin.key_phrase.destroy',['key_phrase'=>'%id%'])]
-                                                ])'>削除</a>
+                                                ])'>{{__('admin.delete')}}</a>
                                                 @else
-                                                    <a class="btn btn-default del_btn" disabled="">削除</a>
+                                                    <a class="btn btn-default del_btn" disabled="">{{__('admin.delete')}}</a>
                                                 @endif
                                             </template>
                                         </th>

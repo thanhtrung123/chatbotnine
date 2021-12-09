@@ -15,8 +15,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary ajax_exec_button">実行</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                <button type="button" class="btn btn-primary ajax_exec_button">{{__('admin.execution')}}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{__('admin.close')}}</button>
             </div>
         </div>
     </div>

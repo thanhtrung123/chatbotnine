@@ -92,13 +92,9 @@ class ResponseInfoController extends Controller
     public function index()
     {
         //チェックボックス
-        $chk_feedback = Constant::getConstArray('bot.status', false, ['key' => 'feedback', 'name' => 'name2']); // + ['other' => '無回答'];
-        $chk_status = Constant::getConstArray('bot.status', false, ['digit' => config('const.bot.status.question_input.id')]);
-        $chk_keyword = [
-            'user_input' => '質問文(入力値)',
-            'api_question' => '質問文(学習データ)',
-            'api_answer' => '回答文',
-        ];
+        $chk_feedback = Constant::getConstArray( __('const.bot.status'), false, ['key' => 'feedback', 'name' => 'name2']); // + ['other' => '無回答'];
+        $chk_status = Constant::getConstArray( __('const.bot.status'), false, ['digit' => config('const.bot.status.question_input.id')]);
+        $chk_keyword =  __('const.bot.search_target');
         $score_vals = ['' => ''] + range(0, 100, 5);
 
         return view(self::ROUTE_NAME . '.index')->with([

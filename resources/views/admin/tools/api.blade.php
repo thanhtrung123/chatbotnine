@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h3>@yield('pageTitle')</h3>
-                <a href="{{route('admin.tools.index')}}">裏ツールトップへ戻る</a>
+                <a href="{{route('admin.tools.index')}}"></a>
 
                 <div class="row">
                     <div class="col-md-12">
@@ -22,7 +22,7 @@
                                         <table class="table">
                                             <tr>
                                                 <th>ID</th>
-                                                <th>質問文</th>
+                                                <th>{{__('admin.learning.question_text')}}</th>
                                                 <th>{{(config('bot.api.answer_is_id')) ? 'API_ID' : '回答'}}</th>
                                             </tr>
                                             @foreach($api_data as $row)

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('異表記データ').' 一覧')
+@section('pageTitle', __('admin.header.variant').__('admin.list'))
 @section('content')
 <div class="container">
     <div class="row">
@@ -11,11 +11,11 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             {{ Form::open(['class'=>'form-horizontal','id'=>'search_form']) }}
-                            {{ Form::form_text('keyword','キーワード',false,['autofocus'=>true]) }}
+                            {{ Form::form_text('keyword',__('admin.keyword'),false,['autofocus'=>true]) }}
                             <div class="row">
                                 <div class="col-md-4"></div>
                                 <div class="col-md-2">
-                                    <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">検索</button>
+                                    <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.search')}}</button>
                                 </div>
                             </div>
                             {{ Form::close() }}
@@ -26,19 +26,19 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             @if(auth()->user()->can('variant create'))
-                            <a class="btn btn-block btn-default" href="{{ route('admin.variant.create') }}">新規追加</a>
+                            <a class="btn btn-block btn-default" href="{{ route('admin.variant.create') }}">{{__('admin.create')}}</a>
                             @else
-                            <a class="btn btn-block btn-default" disabled="">新規追加</a>
+                            <a class="btn btn-block btn-default" disabled="">{{__('admin.create')}}</a>
                             @endif
                             @if(auth()->user()->can('variant import'))
-                            <a class="btn btn-block btn-default" href="{{ route('admin.variant.import') }}">インポート</a>
+                            <a class="btn btn-block btn-default" href="{{ route('admin.variant.import') }}">{{__('admin.import')}}</a>
                             @else
-                            <a class="btn btn-block btn-default" disabled="">インポート</a>
+                            <a class="btn btn-block btn-default" disabled="">{{__('admin.import')}}</a>
                             @endif
                             @if(auth()->user()->can('variant export'))
-                            <a class="btn btn-block btn-default" href="{{ route('admin.variant.export') }}">エクスポート</a>
+                            <a class="btn btn-block btn-default" href="{{ route('admin.variant.export') }}">{{__('admin.export')}}</a>
                             @else
-                            <a class="btn btn-block btn-default" disabled="">エクスポート</a>
+                            <a class="btn btn-block btn-default" disabled="">{{__('admin.export')}}</a>
                             @endif
                         </div>
                     </div>
@@ -57,22 +57,22 @@
                                    ])'>
                                    <thead>
                                     <tr>
-                                        <th data-name="noun_variant_text">異表記文字</th>
-                                        <th data-name="noun_text">置換後文字</th>
+                                        <th data-name="noun_variant_text">{{__('admin.variant.variant_char')}}</th>
+                                        <th data-name="noun_text">{{__('admin.variant.char_after_rep')}}</th>
                                         <th data-template="true">
                                             <template>
                                                 @if(auth()->user()->can('variant edit'))
-                                                <a class="btn btn-default" href="{{ route('admin.variant.edit',['user'=>'%id%']) }}">修正</a>
+                                                <a class="btn btn-default" href="{{ route('admin.variant.edit',['user'=>'%id%']) }}">{{__('admin.edit')}}</a>
                                                 @else
-                                                <a class="btn btn-default" disabled="">修正</a>
+                                                <a class="btn btn-default" disabled="">{{__('admin.edit')}}</a>
                                                 @endif
                                                 @if(auth()->user()->can('variant destroy'))
                                                 <a class="btn btn-default" data-modal='@json([
                                                    'type' => 'delete',
                                                    'params' => ['action'=>route('admin.variant.destroy',['variant'=>'%id%'])]
-                                                   ])'>削除</a>
+                                                   ])'>{{__('admin.delete')}}</a>
                                                 @else
-                                                <a class="btn btn-default" disabled="">削除</a>
+                                                <a class="btn btn-default" disabled="">{{__('admin.delete')}}</a>
                                                 @endif
                                             </template>
                                         </th>

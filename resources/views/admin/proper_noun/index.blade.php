@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('固有名詞').' 一覧')
+@section('pageTitle', __('admin.header.proper_noun').__('admin.list'))
 @section('content')
     <div class="container">
         <div class="row">
@@ -11,11 +11,11 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 {{ Form::open(['class'=>'form-horizontal','id'=>'search_form']) }}
-                                {{ Form::form_text('keyword','キーワード',false,['autofocus'=>true]) }}
+                                {{ Form::form_text('keyword',__('admin.keyword'),false,['autofocus'=>true]) }}
                                 <div class="row">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-2">
-                                        <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">検索</button>
+                                        <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.search')}}</button>
                                     </div>
                                 </div>
                                 {{ Form::close() }}
@@ -26,19 +26,19 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 @if(auth()->user()->can('proper_noun create'))
-                                    <a class="btn btn-block btn-default" href="{{ route('admin.proper_noun.create') }}">新規追加</a>
+                                    <a class="btn btn-block btn-default" href="{{ route('admin.proper_noun.create') }}">{{__('admin.create')}}</a>
                                 @else
-                                    <a class="btn btn-block btn-default" disabled="">新規追加</a>
+                                    <a class="btn btn-block btn-default" disabled="">{{__('admin.create')}}</a>
                                 @endif
                                 @if(auth()->user()->can('proper_noun import'))
-                                    <a class="btn btn-block btn-default" href="{{ route('admin.proper_noun.import') }}">インポート</a>
+                                    <a class="btn btn-block btn-default" href="{{ route('admin.proper_noun.import') }}">{{__('admin.import')}}</a>
                                 @else
-                                    <a class="btn btn-block btn-default" disabled="">インポート</a>
+                                    <a class="btn btn-block btn-default" disabled="">{{__('admin.import')}}</a>
                                 @endif
                                 @if(auth()->user()->can('proper_noun export'))
-                                    <a class="btn btn-block btn-default" href="{{ route('admin.proper_noun.export') }}">エクスポート</a>
+                                    <a class="btn btn-block btn-default" href="{{ route('admin.proper_noun.export') }}">{{__('admin.export')}}</a>
                                 @else
-                                    <a class="btn btn-block btn-default" disabled="">エクスポート</a>
+                                    <a class="btn btn-block btn-default" disabled="">{{__('admin.export')}}</a>
                                 @endif
                             </div>
                         </div>
@@ -58,21 +58,21 @@
                                     <thead>
                                     <tr>
                                         <th data-name="proper_noun_id">ID</th>
-                                        <th data-name="word">{{ __('固有名詞') }}</th>
+                                        <th data-name="word">{{ __('admin.proper_noun.proper_noun') }}</th>
                                         <th data-template="true">
                                             <template>
                                                 @if(auth()->user()->can('proper_noun edit'))
-                                                    <a class="btn btn-default" href="{{ route('admin.proper_noun.edit',['proper_noun'=>'%id%']) }}">修正</a>
+                                                    <a class="btn btn-default" href="{{ route('admin.proper_noun.edit',['proper_noun'=>'%id%']) }}">{{__('admin.edit')}}</a>
                                                 @else
-                                                    <a class="btn btn-default" disabled="">修正</a>
+                                                    <a class="btn btn-default" disabled="">{{__('admin.edit')}}</a>
                                                 @endif
                                                 @if(auth()->user()->can('proper_noun destroy'))
                                                     <a class="btn btn-default del_btn" data-modal='@json([
                                                 'type' => 'delete',
                                                 'params' => ['action'=>route('admin.proper_noun.destroy',['proper_noun'=>'%id%'])]
-                                                ])'>削除</a>
+                                                ])'>{{__('admin.delete')}}</a>
                                                 @else
-                                                    <a class="btn btn-default del_btn" disabled="">削除</a>
+                                                    <a class="btn btn-default del_btn" disabled="">{{__('admin.delete')}}</a>
                                                 @endif
                                             </template>
                                         </th>

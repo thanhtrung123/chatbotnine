@@ -99,7 +99,7 @@ $data = app('request')->all();
         <!-- footer -->
         <div class="modal-footer modal-footer--mine">
             <button type="button" class="btn btn-primary edit-scenario-button">確認</button>
-            <button type="button" class="btn btn-default closeModalAddSc" data-dismiss="modal">閉じる</button>
+            <button type="button" class="btn btn-default closeModalAddSc" data-dismiss="modal">{{__('admin.cancel')}}</button>
         </div>
     </div>
 </div>

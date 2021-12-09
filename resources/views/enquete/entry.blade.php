@@ -26,7 +26,7 @@
                                 {!! $setting['remarks'] ?? '' !!}
                             </legend>
                             @switch($setting['type'])
-                                @case(config('const.enquete.form.text.id'))
+                                @case(__('const.enquete.form.text.id'))
                                 {{Form::text("question[{$q_cd}]")}}
                                 @break
                                 @case(config('const.enquete.form.textarea.id'))
@@ -68,7 +68,7 @@
 
                 <div class="btn-submit-question">
                     <p class="submit_question">
-                        <button type="submit">送信</button>
+                        <button type="submit">{{__('admin.submit')}}</button>
                     </p>
                 </div>
 
@@ -79,14 +79,14 @@
                 {{ Form::close() }}
 
                 <div class="thanks-question-txt">
-                    <p>ご協力ありがとうございました。</p>
+                    <p>{{__('enquete.text.thanks_help')}}</p>
                 </div>
             </div>
         </div>
         <div id="footer">
             <div class="copy-right">
                 <div class="container">
-                    <p>{{config('bot.const.bot_copyright')}}</p>
+                    <p>{{__('bot.const.bot_copyright')}}</p>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
 
         window.CHAT_BOT = {
             route: @json($route),
-            ua_status: @json(config('const.useragent.status')),
+            ua_status: @json(__('const.useragent.status')),
         };
 
         var is_web = {{$is_web ? 'true' : 'false'}};
@@ -147,10 +147,10 @@
         //登録後
         if (store) {
             if (is_web) {
-                alert(@json(config('bot.enquete.messages.send_complete')));
+                alert(@json(__('bot.enquete.messages.send_complete')));
                 window.close();
             } else {
-                alert(@json(config('bot.enquete.messages.send_complete_sns')));
+                alert(@json(__('bot.enquete.messages.send_complete_sns')));
                 $(':submit,:input').prop('disabled', true);
             }
         }

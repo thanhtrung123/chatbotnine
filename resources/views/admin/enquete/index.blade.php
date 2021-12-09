@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('アンケート情報').' 一覧')
+@section('pageTitle', __('admin.header.questionnaire').__('admin.list'))
 @section('content')
 <div class="container">
     <div class="row">
@@ -11,13 +11,13 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             {{ Form::open(['class'=>'form-horizontal','id'=>'search_form']) }}
-                            {{ Form::form_text('chat_id','チャットID',false,['autofocus'=>true]) }}
-                            {{ Form::form_text('date_s','日付(開始)',false,['class'=>'datepicker', 'autocomplete'=>'off']) }}
-                            {{ Form::form_text('date_e','日付(終了)',false,['class'=>'datepicker', 'autocomplete'=>'off']) }}
+                            {{ Form::form_text('chat_id',__('admin.enquete.questionnaire_id'),false,['autofocus'=>true]) }}
+                            {{ Form::form_text('date_s',__('admin.enquete.date_start'),false,['class'=>'datepicker', 'autocomplete'=>'off']) }}
+                            {{ Form::form_text('date_e',__('admin.enquete.date_end'),false,['class'=>'datepicker', 'autocomplete'=>'off']) }}
                             <div class="row">
                                 <div class="col-md-4"></div>
                                 <div class="col-md-2">
-                                    <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">検索</button>
+                                    <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.search')}}</button>
                                 </div>
                             </div>
                             {{ Form::close() }}
@@ -30,7 +30,7 @@
 {{--
                             @if(auth()->user()->can('enquete export'))
 --}}
-                                <a id='export_btn' class="btn btn-block btn-default" href="{{ route('admin.enquete.export') }}">エクスポート</a>
+                                <a id='export_btn' class="btn btn-block btn-default" href="{{ route('admin.enquete.export') }}">{{__('admin.export')}}</a>
 {{--
                             @else
                                 <a class="btn btn-block btn-default" disabled="">エクスポート</a>
@@ -55,11 +55,11 @@
                             <table class="table data-table" id="dtable_user" style="width: 100%;" data-tables='@json($dtable)'>
                                 <thead>
                                     <tr>
-                                        <th data-name="post_id">アンケートID</th>
-                                        <th data-name="posted_at" data-format="datetime">日時</th>
-                                        <th data-name="chat_id">チャットID</th>
+                                        <th data-name="post_id">{{__('admin.enquete.questionnaire_id')}}</th>
+                                        <th data-name="posted_at" data-format="datetime">{{__('admin.enquete.date_time')}}</th>
+                                        <th data-name="chat_id">{{__('admin.enquete.chat_id')}}</th>
                                         <th data-template="true">
-                                            <template><a class="btn btn-default" href="{{ route('admin.enquete.show',['post_id'=>'%post_id%']) }}">詳細</a></template>
+                                            <template><a class="btn btn-default" href="{{ route('admin.enquete.show',['post_id'=>'%post_id%']) }}">{{__('admin.detail')}}</a></template>
                                         </th>
                                     </tr>
                                 </thead>

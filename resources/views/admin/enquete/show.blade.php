@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('アンケート情報').' 詳細')
+@section('pageTitle', __('admin.header.questionnaire').__('admin.detail'))
 @section('content')
     <div class="container">
         <div class="row">
@@ -13,8 +13,8 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>質問</th>
-                                            <th>回答</th>
+                                            <th>{{__('admin.enquete.question')}}</th>
+                                            <th>{{__('admin.enquete.answer')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -38,7 +38,7 @@
                                 <div class="row">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-2">
-                                        <a class="btn btn-default btn-block" href="{{ route('admin.enquete.index',['r'=>1]) }}">戻る</a>
+                                        <a class="btn btn-default btn-block" href="{{ route('admin.enquete.index',['r'=>1]) }}">{{__('admin.cancel')}}</a>
                                     </div>
                                 </div>
                             </div>

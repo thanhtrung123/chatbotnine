@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', '応答状況集計')
+@section('pageTitle', __('admin.header.sesponse_stt_summary'))
 @section('cssfiles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{ asset(mix('css/dashboard.css')) }}" rel="stylesheet">
@@ -97,11 +97,11 @@
                     <div class="col-md-12">
                         <form method="GET" action="{{ route('admin.report.list') }}" accept-charset="UTF-8" id="form_dashboard" class="section-narrow" enctype="multipart/form-data">
                             <div class="panel panel-default">
-                                <div class="panel-heading">集計条件指定</div>
+                                <div class="panel-heading">{{__('admin.report.specify_aggregation_conditions')}}</div>
                                 <div class="panel-body">
                                     <div id="total_date" class="total_date_disp">
                                         <div class="ttl ttl_disp">
-                                            <label for="date_s" class="control-label date_s_disp">集計期間</label>
+                                            <label for="date_s" class="control-label date_s_disp">{{__('admin.report.aggregation_period')}}</label>
                                         </div>
                                         <div class="cnt cnt_disp">
                                             <input type="text" name="date_s" class="datepicker form-control date_w_disp" autocomplete="off" value="{{ $start_date }}">
@@ -110,11 +110,11 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <p id="detailed_conditions" class="accordion">詳細条件</p>
+                                        <p id="detailed_conditions" class="accordion">{{__('admin.report.detail_conditions')}}</p>
                                         <div id="detailed_conditions_target">
                                             <div class="total_date_disp">
                                                 <div class="ttl_disp">
-                                                    <label for="date_s" class="control-label date_s_disp">集計チャネル</label>
+                                                    <label for="date_s" class="control-label date_s_disp">{{__('admin.report.aggregate_exclusion_ip')}}</label>
                                                 </div>
                                                 <div class="cnt_disp">
                                                     @php
@@ -129,7 +129,7 @@
                                             </div>
                                             <div class="total_date_disp">
                                                 <div class="ttl_disp">
-                                                    <label for="date_s" class="control-label date_s_disp">集計除外IP</label>
+                                                    <label for="date_s" class="control-label date_s_disp">{{__('admin.report.aggregate_exclusion_ip')}}</label>
                                                 </div>
                                                 <div class="cnt_disp">
                                                 <div class="myContainer"></div>
@@ -142,10 +142,10 @@
                                     <div class="aggregate_submit">
                                         <div class="ttl_disp"></div>
                                         <div class="aggregate_w_submit">
-                                            <button type="submit" class="btn btn-primary btn-block" id="search_dashboard">集計</button>
+                                            <button type="submit" class="btn btn-primary btn-block" id="search_dashboard">{{__('admin.totalling')}}</button>
                                         </div>
                                         <div class="aggregate_e_submit">
-                                            <button type='button' id="dashboard" class="btn btn-primary btn-block">エクスポート</button>
+                                            <button type='button' id="dashboard" class="btn btn-primary btn-block">{{__('admin.export')}}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -157,13 +157,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">利用状況</div>
+                            <div class="panel-heading">{{__('admin.report.usage_situation')}}</div>
                             <div class="panel-body">
                                 <!-- タブ・メニュー -->
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab_period" data-toggle="tab">期間</a></li>
-                                    <li><a href="#tab_time" data-toggle="tab">時間</a></li>
-                                    <li><a href="#tab_week" data-toggle="tab">曜日</a></li>
+                                    <li class="active"><a href="#tab_period" data-toggle="tab">{{__('admin.report.period')}}</a></li>
+                                    <li><a href="#tab_time" data-toggle="tab">{{__('admin.report.time')}}</a></li>
+                                    <li><a href="#tab_week" data-toggle="tab">{{__('admin.report.day_of_week')}}</a></li>
                                 </ul>
                                 <!-- タブ内容 -->
                                 <div class="tab-content" id="tab_print">
@@ -175,19 +175,19 @@
                                             </div>
                                             <div class="statistics_disp">
                                                 <div class="user_statistic">
-                                                    <p class="user_total"><strong>利用者数（期間合計）</strong></p>
-                                                    <p class="user_unique">ユニークユーザー数</p>
+                                                    <p class="user_total"><strong>{{__('admin.report.number_users')}}</strong></p>
+                                                    <p class="user_unique">{{__('admin.report.number_unique_users')}}</p>
                                                     <p class="user_unique_number"><strong>{{ $state_uses_data['total_user']['user_unique'] }}</strong></p>
-                                                    <p class="user_number">人</p>
-                                                    <p class="user_unique">合計ユーザー数</p>
+                                                    <p class="user_number">{{__('admin.report.people')}}</p>
+                                                    <p class="user_unique">{{__('admin.report.total_users')}}</p>
                                                     <p class="user_unique_number"><strong>{{ $state_uses_data['total_user']['user_date'] }}</strong></p>
-                                                    <p class="user_number">人</p>
+                                                    <p class="user_number">{{__('admin.report.people')}}</p>
                                                 </div>
                                                 <div class="user_statistic">
-                                                    <p class="user_total"><strong>トーク数（期間合計）</strong></p>
+                                                    <p class="user_total"><strong>{{__('admin.report.number_talks')}}</strong></p>
                                                     <p class="user_talk"><strong>{{ $state_uses_data['total_user']['user_talk'] }}</strong></p>
-                                                    <p class="user_talk_date">（1会話平均：{{ ($state_uses_data['total_user']['user_date'] > 0) ? round($state_uses_data['total_user']['user_talk']/$state_uses_data['total_user']['user_date'], 2) : 0 }}）</p>
-                                                    <p class="user_talk_number">件</p>
+                                                    <p class="user_talk_date">（{{__('admin.report.1会話平均：')}}{{ ($state_uses_data['total_user']['user_date'] > 0) ? round($state_uses_data['total_user']['user_talk']/$state_uses_data['total_user']['user_date'], 2) : 0 }}）</p>
+                                                    <p class="user_talk_number">{{__('admin.report.subject')}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -200,19 +200,19 @@
                                             </div> 
                                             <div class="statistics_disp">
                                                 <div class="user_statistic">
-                                                    <p class="user_total"><strong>利用者数（期間合計）</strong></p>
-                                                    <p class="user_unique">ユニークユーザー数</p>
+                                                    <p class="user_total"><strong>{{__('admin.report.number_users')}}</strong></p>
+                                                    <p class="user_unique">{{__('admin.report.number_unique_users')}}</p>
                                                     <p class="user_unique_number"><strong>{{ $state_uses_data['total_user']['user_unique'] }}</strong></p>
-                                                    <p class="user_number">人</p>
-                                                    <p class="user_unique">合計ユーザー数</p>
+                                                    <p class="user_number">{{__('admin.report.people')}}</p>
+                                                    <p class="user_unique">{{__('admin.report.total_users')}}</p>
                                                     <p class="user_unique_number"><strong>{{ $state_uses_data['total_user']['user_hour'] }}</strong></p>
-                                                    <p class="user_number">人</p>
+                                                    <p class="user_number">{{__('admin.report.people')}}</p>
                                                 </div>
                                                 <div class="user_statistic">
-                                                    <p class="user_total"><strong>トーク数（期間合計）</strong></p>
+                                                    <p class="user_total"><strong>{{__('admin.report.number_talks')}}</strong></p>
                                                     <p class="user_talk"><strong>{{ $state_uses_data['total_user']['user_talk_hour'] }}</strong></p>
-                                                    <p class="user_talk_date">（1会話平均：{{ ($state_uses_data['total_user']['user_hour'] > 0) ? round($state_uses_data['total_user']['user_talk_hour']/$state_uses_data['total_user']['user_hour'], 2) : 0 }}）</p>
-                                                    <p class="user_talk_number">件</p>
+                                                    <p class="user_talk_date">（{{__('admin.report.1会話平均：')}}{{ ($state_uses_data['total_user']['user_hour'] > 0) ? round($state_uses_data['total_user']['user_talk_hour']/$state_uses_data['total_user']['user_hour'], 2) : 0 }}）</p>
+                                                    <p class="user_talk_number">{{__('admin.report.subject')}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -225,19 +225,19 @@
                                             </div>
                                             <div class="statistics_disp">
                                                 <div class="user_statistic">
-                                                    <p class="user_total"><strong>利用者数（期間合計）</strong></p>
-                                                    <p class="user_unique">ユニークユーザー数</p>
+                                                    <p class="user_total"><strong>{{__('admin.report.number_users')}}</strong></p>
+                                                    <p class="user_unique">{{__('admin.report.number_unique_users')}}</p>
                                                     <p class="user_unique_number"><strong>{{ $state_uses_data['total_user']['user_unique'] }}</strong></p>
-                                                    <p class="user_number">人</p>
-                                                    <p class="user_unique">合計ユーザー数</p>
+                                                    <p class="user_number">{{__('admin.report.people')}}</p>
+                                                    <p class="user_unique">{{__('admin.report.total_users')}}</p>
                                                     <p class="user_unique_number"><strong>{{ $state_uses_data['total_user']['user_day_of_week'] }}</strong></p>
-                                                    <p class="user_number">人</p>
+                                                    <p class="user_number">{{__('admin.report.people')}}</p>
                                                 </div>
                                                 <div class="user_statistic">
-                                                    <p class="user_total"><strong>トーク数（期間合計）</strong></p>
+                                                    <p class="user_total"><strong>{{__('admin.report.number_talks')}}</strong></p>
                                                     <p class="user_talk"><strong>{{ $state_uses_data['total_user']['user_talk_day_of_week'] }}</strong></p>
-                                                    <p class="user_talk_date">（1会話平均：{{ ($state_uses_data['total_user']['user_day_of_week'] > 0) ? round($state_uses_data['total_user']['user_talk_day_of_week']/$state_uses_data['total_user']['user_day_of_week'], 2) : 0 }}）</p>
-                                                    <p class="user_talk_number">件</p>
+                                                    <p class="user_talk_date">（{{__('admin.report.1会話平均：')}}{{ ($state_uses_data['total_user']['user_day_of_week'] > 0) ? round($state_uses_data['total_user']['user_talk_day_of_week']/$state_uses_data['total_user']['user_day_of_week'], 2) : 0 }}）</p>
+                                                    <p class="user_talk_number">{{__('admin.report.answer_status')}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -251,7 +251,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">回答状況</div>
+                            <div class="panel-heading">{{__('admin.report.answer_status')}}</div>
                             <div class="panel-body">
                                 <div class="print_chart print_chart_flex">
                                     <div class="chart_rate">
@@ -260,13 +260,13 @@
                                         </div>
                                         <div class="chart_rate_response_parent">
                                             <div class="chart_h_response">
-                                                <p class="chart_rate_response_total"><strong>回答数（期間合計）</strong></p>
-                                                <p class="chart_rate_response_number">回答できた数</p>
+                                                <p class="chart_rate_response_total"><strong>{{__('admin.report.number_res')}}</strong></p>
+                                                <p class="chart_rate_response_number">{{__('admin.report.number_answers')}}</p>
                                                 <p class="chart_rate_response_number_disp"><strong>{{ $answer_state_data['count_answer'] }}</strong></p>
-                                                <p class="chart_rate_response_number_case">件</p>
-                                                <p class="chart_rate_response_number">回答できなかった数</p>
+                                                <p class="chart_rate_response_number_case">{{__('admin.report.subject')}}</p>
+                                                <p class="chart_rate_response_number">{{__('admin.report.number_unanswered')}}</p>
                                                 <p class="chart_rate_response_number_disp"><strong>{{ $answer_state_data['count_no_answer'] }}</strong></p>
-                                                <p class="chart_rate_response_number_case">件</p>
+                                                <p class="chart_rate_response_number_case">{{__('admin.report.subject')}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -277,16 +277,16 @@
                                         </div>
                                         <div class="chart_rate_response_parent">
                                             <div class="chart_h_response chart_h_responses">
-                                                <p class="chart_rate_response_total"><strong>解決数（期間合計）</strong></p>
-                                                <p class="chart_rate_response_number">解決した数</p>
+                                                <p class="chart_rate_response_total"><strong>{{__('admin.report.number_resolutions')}}</strong></p>
+                                                <p class="chart_rate_response_number">{{__('admin.report.number_answers')}}</p>
                                                 <p class="chart_rate_response_number_disp"><strong>{{ $answer_state_data['count_answer_handle'] }}</strong></p>
-                                                <p class="chart_rate_response_number_case">件</p>
-                                                <p class="chart_rate_response_number">解決しなかった数</p>
+                                                <p class="chart_rate_response_number_case">{{__('admin.report.subject')}}</p>
+                                                <p class="chart_rate_response_number">{{__('admin.report.number_not_resolved')}}</p>
                                                 <p class="chart_rate_response_number_disp"><strong>{{ $answer_state_data['count_answer_no_handle'] }}</strong></p>
-                                                <p class="chart_rate_response_number_case">件</p>
-                                                <p class="chart_rate_response_number">未回答数</p>
+                                                <p class="chart_rate_response_number_case">{{__('admin.report.subject')}}</p>
+                                                <p class="chart_rate_response_number">{{__('admin.report.number_unanswered')}}</p>
                                                 <p class="chart_rate_response_number_disp"><strong>{{ $answer_state_data['count_answer_yet_handle'] }}</strong></p>
-                                                <p class="chart_rate_response_number_case">件</p>
+                                                <p class="chart_rate_response_number_case">{{__('admin.report.subject')}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -295,7 +295,7 @@
                                 @if (count($answer_state_data['quest_popular_list']) > 0)
                                 <div class="{{ (count($answer_state_data['quest_popular_list']) <= 10) ? 'result_answer' : 'result_answers'  }}">
                                     <div class="result_answer_disp">
-                                        <p class="result_answer_title"><strong>期間中に回答した回数が多い質問</strong></p>
+                                        <p class="result_answer_title"><strong>{{__('admin.report.answered_period')}}</strong></p>
                                     </div>
                                     <div class="result_answer_disp_show">
                                         <ol class="data-list">
@@ -320,7 +320,7 @@
                                 @if (count($answer_state_data['quest_popular_no_list']) > 0)
                                 <div class="{{ (count($answer_state_data['quest_popular_no_list']) <= 10) ? 'result_answer' : 'result_answers'  }}">
                                     <div class="result_answer_disp">
-                                        <p class="result_answer_title"><strong>回答ができなかった質問</strong></p>
+                                        <p class="result_answer_title"><strong>{{__('admin.report.Questions_could_not_ans')}}</strong></p>
                                     </div>
                                     <div class="result_answer_disp_show">
                                         <ol class="data-list">
@@ -340,7 +340,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default" id="chart_table">
-                            <div class="panel-heading test">アンケート回答</div>
+                            <div class="panel-heading test">{{__('admin.header.questionnaire')}}</div>
                             <div class="panel-body enquete-body">
                                     <div class="row-flex">
                                         @php

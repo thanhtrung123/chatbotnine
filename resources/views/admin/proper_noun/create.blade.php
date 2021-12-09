@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('固有名詞') . ' 登録')
+@section('pageTitle',  __('admin.header.proper_noun').__('admin.create'))
 @section('content')
     <div class="container">
         <div class="row">
@@ -12,14 +12,14 @@
                                 <div class="row">
                                     <div class="col-md-10">
                                         {{ Form::open(['url'=>route('admin.proper_noun.store'),'method'=>'POST','class'=>'form-horizontal','id'=>'entry_form']) }}
-                                        {{ Form::form_text('word',__('固有名詞'),true,['required'=>true,'autofocus'=>true]) }}
+                                        {{ Form::form_text('word',__('admin.proper_noun.proper_noun'),true,['required'=>true,'autofocus'=>true]) }}
                                         <div class="row">
                                             <div class="col-md-4"></div>
                                             <div class="col-md-2">
-                                                <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">確認</button>
+                                                <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.submit')}}</button>
                                             </div>
                                             <div class="col-md-2">
-                                                <a class="btn btn-default btn-block" href="{{ route('admin.proper_noun.index') }}">戻る</a>
+                                                <a class="btn btn-default btn-block" href="{{ route('admin.proper_noun.index') }}">{{__('admin.cancel')}}</a>
                                             </div>
                                         </div>
 

@@ -168,7 +168,7 @@ trait FormTrait
     public function confirmFileZip($request, $path_name)
     {
         $custom_messages = [
-            'mimes' => config('scenario.import_export.message.scenario_upload_zip_error')
+            'mimes' => __('bot.message.scenario_upload_zip_error')
         ];
         $validator = Validator::make($request->all(), [
             'zip' => 'file|mimes:zip|max:' . config('scenario.import_export.post_max_size'),
@@ -182,7 +182,7 @@ trait FormTrait
         $zip_file = $request->file('zip');
         $zip = new ZipArchive;
         if ($zip->open($zip_file, ZipArchive::CREATE) !== TRUE) {
-            $errors = config('scenario.import_export.message.scenario_upload_error');
+            $errors = __('bot.message.scenario_upload_error');
         } else {
             $zip_file_content = array();
             for ($i = 0; $i < $zip->count(); $i++) {
@@ -191,7 +191,7 @@ trait FormTrait
             foreach (config('scenario.import_export.file_json') as $name_file) {
                 $key_json = array_search($name_file, $zip_file_content);
                 if ($key_json === false) {
-                    $errors = config('scenario.import_export.message.scenario_upload_zip_error');
+                    $errors = __('bot.message.scenario_upload_zip_error');
                     break;
                 }
             }

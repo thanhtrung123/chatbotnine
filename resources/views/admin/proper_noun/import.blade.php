@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('pageTitle', __('固有名詞データ').' インポート')
+@section('pageTitle', __('admin.header.proper_noun').__('admin.import'))
 @section('content')
 <div class="container">
     <div class="row">
@@ -23,34 +23,32 @@
                                     @if($isConfirm)
                                     <div class="row">
                                         <div class="col-md-12">
-                                            問題ございません。<br/>
-                                            このまま、{{ __('固有名詞データ') }}を更新される場合、<br/>
-                                            以下の登録ボタンをクリックしてください。
+                                            {{__('admin.proper_noun.warning_message')}}
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-2">
-                                            <a class="btn btn-warning btn-block" href="{{ route('admin.proper_noun.import') }}">キャンセル</a>
+                                            <a class="btn btn-warning btn-block" href="{{ route('admin.proper_noun.import') }}">{{__('admin.register')}}</a>
                                         </div>
                                         <div class="col-md-2">
-                                            <button class="btn btn-primary btn-block" type="submit" name="store" value="0">登録</button>
+                                            <button class="btn btn-primary btn-block" type="submit" name="store" value="0">{{__('admin.cancel')}}</button>
                                         </div>
                                     </div>
                                     @else
                                     <div class="row bottom-buf10">
                                         <div class="col-md-12 text-danger">
-                                            <strong>!!注意!! 現状の{{ __('固有名詞データ') }}はすべて削除されます（復元はできません）</strong>
+                                            <strong>{{__('admin.proper_noun.warning_message')}}</strong>
                                         </div>
                                     </div>
-                                    {{ Form::form_file('excel','Excelファイル(.xlsx、.xls)', '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
+                                    {{ Form::form_file('excel',__('admin.excel_file'), '', ['accept' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel']) }}
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-2">
-                                            <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">インポート</button>
+                                            <button class="btn btn-primary btn-block" type="submit" name="confirm" value="0">{{__('admin.import')}}</button>
                                         </div>
                                         <div class="col-md-2">
-                                            <a class="btn btn-default btn-block" href="{{ route('admin.proper_noun.index') }}">戻る</a>
+                                            <a class="btn btn-default btn-block" href="{{ route('admin.proper_noun.index') }}">{{__('admin.cancel')}}</a>
                                         </div>
                                     </div>
                                     @endif
