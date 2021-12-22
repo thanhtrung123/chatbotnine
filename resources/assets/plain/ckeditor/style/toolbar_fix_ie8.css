@@ -1,0 +1,33 @@
+#headarea {
+	position: fixed;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+	margin: 0 auto;
+	z-Index: 900;
+}
+
+#headareaZero {
+	position: fixed;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+	margin: 0 auto;
+	z-Index: 900;
+}
+
+#contents {
+	position: absolute;
+	width: 100%; 
+	/*text-align: center;*/
+	top: 140px;
+	margin: 0 auto;
+}
+
+#contentsZero {
+	position: absolute;
+	width: 100%; 
+	/*text-align: center;*/
+	top: 123px;
+	margin: 0 auto;
+}

@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+/* ==================================================
+accessibility color 黒地に黄色
+================================================== */
+#tmp_wrapper,
+#tmp_wrapper * {
+	color:#FFFF00 !important;
+	background-color:#000000 !important;
+	background-image:none !important;
+	border-color:#FFFF00 !important;
+	list-style-image:none !important;
+}
+#tmp_wrapper a,
+#tmp_wrapper a span,
+#tmp_wrapper button,
+#tmp_wrapper input[type="submit"],
+#tmp_wrapper input[type="button"],
+#tmp_wrapper input[type="reset"] {
+	color:#FFFFFF !important;
+	background-color:transparent !important;
+}
+#tmp_wrapper span {
+	z-index:auto !important;
+}
+#tmp_event_cal_cnt .calendar .today {
+	background-color:transparent !important;
+}
+#tmp_wrap_main h1,
+#tmp_wrap_main h2,
+#tmp_wrap_main h3,
+#tmp_wrap_main h4,
+#tmp_wrap_main h5,
+#tmp_wrap_main h6 {
+	border:none !important;
+	padding:5px !important;
+}
+#tmp_wrap_main h1 {
+	border:3px solid yellow !important;
+}
+#tmp_wrap_main h2 {
+	border-left:3px solid yellow !important;
+	border-bottom:1px solid yellow !important;
+}
+#tmp_wrap_main h3 {
+	border-left:3px solid yellow !important;
+}
+#tmp_wrap_main #tmp_cate_ttl h1 {
+	padding:0 !important;
+	border:none !important;
+}
+.format_top #tmp_wrap_main h1,
+.format_top #tmp_wrap_main h2,
+.format_top #tmp_wrap_main h3,
+.format_top #tmp_wrap_main h4,
+.format_top #tmp_wrap_main h5,
+.format_top #tmp_wrap_main h6 {
+	border:none !important;
+	padding:0 !important;
+}
+/* used_bg_img */
+#tmp_wrapper .used_bg_img {
+	width:auto !important;
+	height:auto !important;
+}
+#tmp_wrapper .used_bg_img a {
+	width:auto !important;
+	height:auto !important;
+	text-decoration:underline !important;
+}
+#tmp_wrapper .used_bg_img span {
+	z-index:1 !important;
+	height:auto !important;
+}
+#tmp_wrapper .used_bg_img a span {
+	color:#FFFFFF !important;
+	background-color:transparent !important;
+}
+/* icon */
+#tmp_wrap_main a.icon_pdf,
+#tmp_wrap_main a.icon_word,
+#tmp_wrap_main a.icon_excel {
+	margin:0 !important;
+	padding:0 !important;
+}
+/* for Firefox3.0 */
+#tmp_wrap_main caption {
+	background-color:transparent !important;
+}
+/* for google box */
+#tmp_wrap_main #tmp_gmap_box,
+#tmp_wrap_main #tmp_gmap_box * {
+	background-color:transparent !important;
+	color:#000000 !important;
+	border-color:yellow !important;
+	list-style-image:none !important;
+}
+#tmp_wrap_main #tmp_gmap_box a {
+	color:#7777CC !important;
+}

@@ -1,0 +1,67 @@
+body {
+	background: url(/ckeditor/images/spacer.gif) fixed no-repeat;
+}
+
+#headarea {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	margin: 0 auto;
+	position: absolute;
+	top: expression(eval(document.body.scrollTop +0 ||  
+		document.documentElement.scrollTop +0) );
+	z-Index: 900;
+}
+
+#headareaZero {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	margin: 0 auto;
+	position: absolute;
+	top: expression(eval(document.body.scrollTop +0 ||  
+		document.documentElement.scrollTop +0) );
+	z-Index: 900;
+}
+
+#headareaDummy {
+	height: expression(document.getElementById ( 'headmessage') ?  
+		eval("135+document.getElementById('headmessage').offsetHeight")
+		+ "px" :   "135px" );
+}
+
+#headareaDummyZero {
+	height: expression(document.getElementById ( 'headmessage') ?  
+		eval("125+document.getElementById('headmessage').offsetHeight")
+		+ "px" :   "125px" );
+}
+
+#headareaDummyFrame {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	height: expression(document.getElementById ( 'headmessage') ?  
+		eval("124+document.getElementById('headmessage').offsetHeight")
+		+ "px" :   "124px" );
+	width: 100%;
+	margin: 0 auto;
+	position: absolute;
+	top: expression(eval(document.body.scrollTop +0 ||  
+		document.documentElement.scrollTop +0) );
+	z-Index: 898;
+}
+
+#headareaDummyFrameZero {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	height: expression(document.getElementById ( 'headmessage') ?  
+		eval("124+document.getElementById('headmessage').offsetHeight")
+		+ "px" :   "124px" );
+	width: 100%;
+	margin: 0 auto;
+	position: absolute;
+	top: expression(eval(document.body.scrollTop +0 ||  
+		document.documentElement.scrollTop +0) );
+	z-Index: 898;
+}

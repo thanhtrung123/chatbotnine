@@ -1,0 +1,423 @@
+body {
+	margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-decoration: none;
+    width: auto;
+    height: auto;
+    vertical-align: baseline;
+    box-sizing: content-box;
+    position: static;
+    transition: none;
+    /* border-collapse: collapse; */
+    text-decoration: none;
+    font: normal normal normal 12px Arial,Helvetica,Tahoma,Verdana,Sans-Serif;
+    color: inherit;
+	font-size: 12px;
+	font-weight: bold;
+  }
+  
+table {
+    color: inherit;
+	font-size: 12px;
+	font-weight: bold;
+  }
+
+/* title */
+.cke_dialog_title {
+	font-weight: bold;
+	font-size: 12px;
+	cursor: move;
+	position: relative;
+	color: #484848;
+	border-bottom: 1px solid #d1d1d1;
+	padding: 12px 19px 12px 12px;
+	background: #f8f8f8;
+	letter-spacing: .3px
+}
+
+
+/* button */
+.cke_dialog_ui_button {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	padding: 4px 10px;
+	margin: 0;
+	text-align: center;
+	color: #484848;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid #bcbcbc;
+	border-radius: 2px;
+	background: #f8f8f8;
+	letter-spacing: .3px;
+	line-height: 18px;
+	box-sizing: border-box;
+	color: inherit;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.cke_dialog_ui_button_padding {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.cke_dialog_ui_button:hover {
+	background: #fff
+}
+
+.cke_dialog_ui_button:focus,
+.cke_dialog_ui_button:active {
+	border: 1px solid #139ff7;
+}
+/*   */
+.cke_dialog_ui_button_ok {
+	color: #fff;
+	background: #09863e;
+	border: 1px solid #09863e;
+	font-weight: normal;
+}
+
+.cke_dialog_ui_button_ok:hover {
+	background: #53aa78;
+	border-color: #53aa78
+}
+
+.cke_dialog_ui_button_ok:focus,
+.cke_dialog_ui_button_ok:active {
+	border-color: #139ff7
+}
+
+.cke_dialog_ui_button_ok:hover,
+.cke_dialog_ui_button_ok:focus,
+.cke_dialog_ui_button_ok:active {
+	border-color: #484848
+}
+
+
+/* grey button */
+.cke_dialog_ui_button_grey {
+	background: #dee0df;
+	border: 1px solid #dee0df;
+	font-weight: bold;
+}
+
+.cke_dialog_ui_button_grey:hover {
+	background: #f2f1f0;
+	border-color: #dee0df;
+}
+
+.cke_dialog_ui_button_grey:focus,
+.cke_dialog_ui_button_grey:active {
+	border-color: #dee0df;
+}
+
+.cke_dialog_ui_button_grey:hover,
+.cke_dialog_ui_button_grey:focus,
+.cke_dialog_ui_button_grey:active {
+	border-color: #dee0df;
+}
+
+/* Dissable button */
+.cke_dialog_ui_button_inactive {
+	color: #c7c7c7;
+	border: 1px solid #dcdcdc;
+	cursor: default;
+}
+
+.cke_dialog_ui_button_inactive:hover {
+	background: #fff
+}
+
+.cke_dialog_ui_button_inactive:focus,
+.cke_dialog_ui_button_inactive:active {
+	border: 1px solid #dcdcdc;
+	outline: 0;
+}
+
+/* text input */
+
+.cke_dialog_ui_input_text:hover,
+.cke_dialog_ui_input_password:hover,
+.cke_dialog_ui_input_textarea:hover {
+	border: 1px solid #aeb3b9
+}
+
+.cke_dialog_ui_input_textarea {
+	overflow: auto;
+	resize: none
+}
+
+.cke_dialog_ui_input_text,
+.cke_dialog_ui_input_password,
+.cke_dialog_ui_input_textarea {
+	background-color: #fff;
+	border: 1px solid #bcbcbc;
+	padding: 4px 6px;
+	outline: 0;
+	width: 100%;
+	*width: 95%;
+	box-sizing: border-box;
+	border-radius: 2px;
+	min-height: 28px;
+	margin-left: 1px
+}
+
+.cke_dialog_ui_input_text:hover,
+.cke_dialog_ui_input_password:hover,
+.cke_dialog_ui_input_textarea:hover {
+	border: 1px solid #aeb3b9
+}
+
+.cke_dialog_ui_input_text:focus,
+.cke_dialog_ui_input_password:focus,
+.cke_dialog_ui_input_textarea:focus,
+.cke_dialog_ui_input_select:focus {
+	outline: 0;
+	border: 2px solid #139ff7
+}
+
+.cke_dialog_ui_input_text:focus {
+	padding-left: 5px
+}
+
+.cke_dialog_ui_input_textarea:focus {
+	padding: 3px 5px
+}
+
+.cke_dialog_ui_input_select {
+	height: 28px;
+	line-height: 28px;
+	background-color: #fff;
+	border: 1px solid #bcbcbc;
+	padding: 3px 3px 3px 6px;
+	outline: 0;
+	border-radius: 2px;
+	margin: 0 1px;
+	box-sizing: border-box;
+	/* width: calc(100% - 2px)!important */
+}
+
+.cke_dialog_ui_checkbox_input,
+.cke_dialog_ui_radio_input {
+	margin-left: 1px;
+	margin-right: 2px
+}
+
+.cke_dialog_ui_checkbox_input:focus,
+.cke_dialog_ui_checkbox_input:active,
+.cke_dialog_ui_radio_input:focus,
+.cke_dialog_ui_radio_input:active {
+	border: 0;
+	outline: 2px solid #139ff7
+}
+
+.cke_dialog_ui_checkbox,
+.cke_dialog fieldset .cke_dialog_ui_vbox .cke_dialog_ui_checkbox {
+	display: inline-block
+}
+
+.cke_dialog fieldset .cke_dialog_ui_vbox .cke_dialog_ui_checkbox {
+	padding-top: 5px
+}
+
+.cke_dialog_ui_checkbox .cke_dialog_ui_checkbox_input,
+.cke_dialog_ui_checkbox .cke_dialog_ui_checkbox_input+label,
+.cke_dialog fieldset .cke_dialog_ui_vbox .cke_dialog_ui_checkbox .cke_dialog_ui_checkbox_input,
+.cke_dialog fieldset .cke_dialog_ui_vbox .cke_dialog_ui_checkbox .cke_dialog_ui_checkbox_input+label {
+	vertical-align: middle
+}
+
+/* labels */
+.cke_dialog_ui_labeled_label {
+   margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-decoration: none;
+    width: auto;
+    height: auto;
+    vertical-align: baseline;
+    box-sizing: content-box;
+    position: static;
+    transition: none;
+    border-collapse: collapse;
+    font: normal normal normal 12px Arial,Helvetica,Tahoma,Verdana,Sans-Serif;
+    color: #000;
+    text-align: left;
+    white-space: nowrap;
+    cursor: auto;
+    float: none;
+    margin-left: 1px;
+    display: inline;
+    cursor: default;
+    letter-spacing: .3px;
+}
+
+.cke_dialog_ui_hbox_first,
+.cke_dialog_ui_hbox_child,
+.cke_dialog_ui_hbox_last {
+	vertical-align: top
+}
+
+/* TABS */
+
+.cke_dialog_tabs {
+	height: 34px;
+	display: inline-block;
+	margin: 9px 0 0 10px;
+}
+
+.cke_dialog_tab {
+	height: 25px;
+	padding: 4px 8px;
+	display: inline-block;
+	cursor: pointer;
+	line-height: 26px;
+	outline: 0;
+	color: #484848;
+	border: 1px solid #d1d1d1;
+	border-radius: 3px 3px 0 0;
+	background: #f8f8f8;
+	min-width: 90px;
+	text-align: center;
+	margin-left: -1px;
+	letter-spacing: .3px;
+	text-decoration: none;
+}
+
+.cke_dialog_tab:hover {
+	background-color: #fff
+}
+
+.cke_dialog_tab:focus {
+	/* border: 2px solid #139ff7; */
+	border-bottom-color: #d1d1d1;
+	padding: 3px 7px;
+	position: relative;
+	z-index: 1
+}
+
+.cke_dialog_tab_selected {
+	background: #fff;
+	border-bottom-color: #fff;
+                  border: 2px solid #139ff7;
+	border-bottom: 2px solid #fff;
+	cursor: default;
+	filter: none
+}
+
+.cke_dialog_tab_selected:hover,
+.cke_dialog_tab_selected:focus {
+	border-bottom-color: #fff
+}
+
+.cke_dialog_tab_disabled {
+	color: #bababa;
+	cursor: default
+}
+
+.cke_dialog_contents_body {
+	overflow: auto;
+	padding: 9px 10px 5px 10px;
+	}
+
+.cke_dialog_contents {
+	background-color: #fff;
+	overflow: auto;
+	padding: 15px 10px 5px 10px;
+	border-top: 1px solid #d1d1d1
+}
+
+/* ai LOGGIC */
+.layer {
+	display: none;
+	position: absolute;
+	margin: 0 auto;
+	z-index: 9999;
+}
+
+.layer * {
+	font-size: 14px;
+	line-height: 140%;
+}
+
+.layer * {
+	line-height: 100% !important;
+}
+
+.layer td {
+	background-image: none !important;
+}
+
+.layer a {
+	border: none !important;
+	background: none !important;
+}
+
+.layer a:active {
+	border: none !important;
+	background: none !important;
+}
+
+.layer a:focus {
+	border: none !important;
+	background: none !important;
+}
+
+.layer a:visited {
+	border: none !important;
+	background: none !important;
+}
+
+.layerheader {
+	background-image: url(../images/layer/titlebar_bg.jpg);
+	height: 30px;
+}
+
+/* templates dialog */
+.TplItem:hover { 
+	background-color: #d1d1d1;
+	cursor: pointer;
+}
+
+.BtnReset
+{
+	float: left;
+	background-position: center center;
+	background-image: url(images/reset.gif);
+	width: 14px;
+	height: 16px;
+	/*
+	width: 16px;
+	height: 16px;
+	*/
+	background-repeat: no-repeat;
+	border: 1px none;
+	font-size: 1px ;
+}
+
+.BtnLocked, .BtnUnlocked
+{
+	float: left;
+	background-position: center center;
+	background-image: url(images/locked.gif);
+	width: 18px;
+	height: 35px;
+	/*
+	width: 16px;
+	height: 16px;
+	*/
+	background-repeat: no-repeat;
+	border: 1px none;
+	font-size: 1px ;
+}
+
+.BtnUnlocked
+{
+	background-image: url(images/unlocked.gif);
+}
