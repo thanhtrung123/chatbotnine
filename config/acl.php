@@ -33,4 +33,6 @@ return [
         'role' => 'admin',
         'user' => 'admin',
     ],
+    // Id role WYSIWYG Editor
+    'source_priviliges_id' => [1]
 ];

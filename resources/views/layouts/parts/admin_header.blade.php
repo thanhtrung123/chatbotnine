@@ -13,6 +13,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" style="font-weight: bold;" href="{{ route('admin') }}">
+                {{ config('app.name', 'Laravel') }}
             </a>
         </div>
 

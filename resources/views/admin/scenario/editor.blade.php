@@ -100,7 +100,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="qaModal" class="editor-modal modal fade">
+                    <div id="qaModal" class="editor-modal modal fade" data-backdrop="static">
                         @include('layouts.parts.modal_qa_add')
                     </div>
                     <div id="scenarioAdd" class="editor-modal modal fade">
@@ -130,6 +130,31 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Small modal -->
+                    <div id="confirmModal" class="editor-modal modal fade in" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="confirmModalLabel"></h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="margin-right: 15px;">
+                                    <div class="content">
+                                        既に同じシナリオ名が存在します。
+                                        <br>
+                                        登録しますか？
+                                    </div>
+                                    <div class="text-center button-confirm">
+                                        <button id="cancel" class="btn btn-default scenario-confirm-button" data-dismiss="modal" aria-label="Close" class="close"> いいえ </button>
+                                        <button id="ok" class="btn btn-primary scenario-confirm-button"> はい </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Detail learning -->
                     <div id="detailSenarioQA" class="editor-modal modal fade">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-dialog modal-lg">

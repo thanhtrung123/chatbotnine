@@ -2,6 +2,7 @@
 
 namespace App\Imports\Admin;
 
+use App\Imports\Traits\DuplicateTrait;
 use App\Models\Synonym;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithValidation;
@@ -18,8 +19,8 @@ use Maatwebsite\Excel\Concerns\WithBatchInserts;
 class SynonymImport implements ToModel, WithValidation, SkipsOnFailure, WithHeadingRow, WithChunkReading, WithBatchInserts
 {
     use \Maatwebsite\Excel\Concerns\Importable,
-        \Maatwebsite\Excel\Concerns\SkipsFailures;
-
+        \Maatwebsite\Excel\Concerns\SkipsFailures,
+        DuplicateTrait;
     /**
      * @param array $row
      *
@@ -31,6 +32,21 @@ class SynonymImport implements ToModel, WithValidation, SkipsOnFailure, WithHead
             'keyword' => $row['keyword'],
             'synonym' => $row['synonym'],
         ]);
+    }
+
+    /**
+     * バリデート
+     * @param $validator
+     * @param $row
+     * @return array
+     */
+    public function validateRow($validator, $row)
+    {
+        $error = [];
+        if (isset($row['keyword']) && $this->duplicateCheck('keyword', $row)) {
+            $error['keyword'][] = $this->customValidationAttributes()['keyword'] . config('validation.duplicate');
+        }
+        return $error;
     }
 
     /**

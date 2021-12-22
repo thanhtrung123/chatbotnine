@@ -76,14 +76,17 @@ class QnaService extends ApiAbstract implements ApiInterface
 
     /**
      * 学習データ追加
-     * @param $learning_data
+     * @param $learning_datas
      * @return mixed
      */
-    public function addLearningData($learning_data)
+    public function addLearningData($learning_datas)
     {
-        $this->buildAddParams($learning_data);
-        $ret = $this->updateLearningData();
-        $this->clearParams();
+        $ret = [];
+        foreach (array_chunk($learning_datas, config('bot.api.qna.knowledge.chunk_size')) as $learning_data) {
+            $this->buildAddParams($learning_data);
+            $ret[] = $this->updateLearningData();
+            $this->clearParams();
+        }
         return $ret;
     }
 

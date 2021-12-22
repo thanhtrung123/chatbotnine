@@ -87,6 +87,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('/report', 'ReportController@index')->name('report.list');
     Route::post('/upload/image', 'ReportController@uploadImage')->name('report.upload');
     Util::addCsvRoute('report', null, ['export']);
+    // Wysiwyg custom Image
+    Route::match(array('get', 'post'), '/wysiwyg/image', 'WysiwygFileUploadController@wysiwygImage')->name('wysiwyg.image');
+    Route::match(array('get', 'post'), '/wysiwyg/image_list', 'WysiwygFileUploadController@wysiwygImageList')->name('wysiwyg.list');
+    Route::get('/wysiwyg/image_property', 'WysiwygFileUploadController@wysiwygImageProperty')->name('wysiwyg.property');
+    Route::post('/wysiwyg/image_property_save', 'WysiwygFileUploadController@wysiwygImagePropertySave')->name('wysiwyg.property_save');
+    Route::post('/wysiwyg/image_upload', 'WysiwygFileUploadController@wysiwygImageUpload')->name('wysiwyg.upload');
+    Route::get('/wysiwyg/image_delete', 'WysiwygFileUploadController@wysiwygImageDelete')->name('wysiwyg.delete');
+    Route::get('/wysiwyg/image_refresh', 'WysiwygFileUploadController@wysiwygImageRefresh')->name('wysiwyg.refresh');
+    Route::get('/wysiwyg/image_rename', 'WysiwygFileUploadController@wysiwygImageRename')->name('wysiwyg.rename');
+    Route::match(array('get', 'post'), '/wysiwyg/image_controll', 'WysiwygFileUploadController@wysiwygImageControll')->name('wysiwyg.controll');
+    Route::post('/wysiwyg/image_check', 'WysiwygFileUploadController@wysiwygImageCheck')->name('wysiwyg.image_check');
 });
 //Speech to text
 Route::post('/speech/upload', 'Bot\SpeechController@uploadSpeech')->name('speech.upload');

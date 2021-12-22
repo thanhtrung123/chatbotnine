@@ -1,5 +1,14 @@
 @extends('layouts.admin')
 @section('pageTitle', __('学習データ').' 修正')
+@section('f_jsfiles')
+    <script src="{{ asset('/ckeditor/ckeditor.js') }}"></script>
+@stop
+@section('jsfiles')
+    <script src="{{ asset('/js/iframe_display.js') }}"></script>
+    <script src="{{ asset('/ckeditor/gd_files/lang/fcklangmanager.js') }}"></script>
+    <script src="{{ asset('/ckeditor/gd_files/js/iframe_dialog_manager.js') }}" type='text/javascript'></script>
+    @include('layouts.parts.wysiwyg_toolbar_option')
+@stop
 @section('content')
     <div class="container">
         <div class="row">

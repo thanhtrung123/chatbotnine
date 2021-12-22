@@ -2,6 +2,7 @@
 
 namespace App\Imports\Admin;
 
+use App\Imports\Traits\DuplicateTrait;
 use App\Models\Variant;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithValidation;
@@ -18,7 +19,8 @@ use Maatwebsite\Excel\Concerns\WithBatchInserts;
 class VariantImport implements ToModel, WithValidation, SkipsOnFailure, WithHeadingRow, WithChunkReading, WithBatchInserts
 {
     use \Maatwebsite\Excel\Concerns\Importable,
-        \Maatwebsite\Excel\Concerns\SkipsFailures;
+        \Maatwebsite\Excel\Concerns\SkipsFailures,
+        DuplicateTrait;
 
     /**
      * @param array $row
@@ -33,6 +35,21 @@ class VariantImport implements ToModel, WithValidation, SkipsOnFailure, WithHead
         ]);
     }
 
+    /**
+     * バリデート
+     * @param $validator
+     * @param $row
+     * @return array
+     */
+    public function validateRow($validator, $row)
+    {
+        $error = [];
+        if (isset($row['noun_variant_text']) && $this->duplicateCheck('noun_variant_text', $row)) {
+            $error['noun_variant_text'][] = $this->customValidationAttributes()['noun_variant_text'] . config('validation.duplicate');
+        }
+        return $error;
+    }
+    
     /**
      * ルール
      * @return array

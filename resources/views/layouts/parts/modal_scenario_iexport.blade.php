@@ -19,7 +19,7 @@
                                 {{ Form::label('scenario_file', 'シナリオファイル') }}
                             </div>
                             <div class="col-md-10 upload-frm">
-                                <label for="zip"><span>ファイルを選択</span></label>
+                                <label for="zip" class="btn-upload-zip"><span>ファイルを選択</span></label>
                                 {{ Form::file('zip',['class' => 'form-control upload-input', 'id' => 'zip']) }}
                                 {{ Form::text('uploadName', '', ['class' => 'form-control upload-name', 'id' => 'uploadName', 'disabled' => 'disabled']) }}
                             </div>

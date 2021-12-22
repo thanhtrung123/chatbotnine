@@ -2,7 +2,7 @@
 @section('pageTitle', __('学習データ').' 一覧')
 @section('content')
 @section('cssfiles')
-    <link rel="stylesheet" href="{{ asset(mix('css/synonym.css')) }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset(mix('css/learning.css')) }}" type="text/css">
 @endsection
     <div class="container">
         <div class="row">

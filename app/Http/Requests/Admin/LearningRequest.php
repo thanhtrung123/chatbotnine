@@ -50,13 +50,18 @@ class LearningRequest extends FormRequest
             }
             return true;
         });
-
+        $diff_rules = [];
+        if ($this->method() == 'PUT') {
+            //update
+            $diff_rules['question'] = 'required|string|unique:tbl_learning,question,' . $this->route('learning');
+        } else {
+            //create
+            $diff_rules['question'] = 'required|string|unique:tbl_learning';
+        }
         $rules = [
-            'question' => 'required|string',
             'answer' => 'required|string',
             'truth_data.*' => 'valid1',
         ];
-        $diff_rules = [];
         return $rules + $diff_rules;
     }
 

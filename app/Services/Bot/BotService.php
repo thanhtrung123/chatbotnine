@@ -396,6 +396,7 @@ class BotService
                 $this->execNormal();
             }
         } catch (\Exception $ex) {
+            dd($ex);
             $this->logger->error('[BOT-ERROR]' . $ex->getMessage() . ' [CODE]' . $ex->getCode());
             if (env('APP_DEBUG')) {
                 $this->result_data['err'] = $ex->getMessage();

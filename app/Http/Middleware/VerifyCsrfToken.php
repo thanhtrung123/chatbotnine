@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'admin/wysiwyg/image_list',
+        'admin/wysiwyg/image_controll',
     ];
 }

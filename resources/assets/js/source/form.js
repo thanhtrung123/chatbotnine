@@ -187,10 +187,18 @@
      */
     base.form.bindReplaceInput = (p = $(document)) => {
         p.on('click', '[data-replace-input]', function (e) {
-            replaceInputProcess($(this));
+            var cb_func = null;
+            if (getFullscreenElement() != null && $('#mySelect2').length > 0) {
+                cb_func = function() {
+                    $('.select2').select2({
+                        dropdownParent: $('#mySelect2')
+                    });
+                };
+            }
+            replaceInputProcess($(this), cb_func);
         });
     };
-    let replaceInputProcess = (btn) => {
+    let replaceInputProcess = (btn, callback) => {
         let data = btn.data('replaceInput');
         data.target = base.util.findDom(data.target);
         if (replacedInputs[data.target.attr('name')] || data.target.length == 0) {
@@ -205,6 +213,7 @@
             base.util.ajax('get', data.ajax.url, {}).done(function (ret) {
                 data.options = ret.data;
                 createReplaceInput(data);
+                if (callback) callback();
             }).fail(function (ret) {
                 base.util.ajaxFail(ret);
             });
@@ -239,7 +248,20 @@
         data.target.remove();
         data.btn.prop('disabled', false);
     };
-
+    let getFullscreenElement = () => {
+        if (document.webkitFullscreenElement) {
+            return document.webkitFullscreenElement;
+        }
+        else if (document.mozFullScreenElement) {
+            return document.mozFullScreenElement;
+        }
+        else if (document.msFullscreenElement) {
+            return document.msFullscreenElement;
+        }
+        else if (document.fullscreenElement) {
+            return document.fullscreenElement;
+        }
+    };
 
     //DOM ロード後
     $(function () {

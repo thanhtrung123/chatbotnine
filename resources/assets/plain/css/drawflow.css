@@ -1126,6 +1126,18 @@ span.help-block > strong {
     stroke: #ef8f18 !important;
 }
 
+#confirmModal > .modal-dialog{
+    margin-top: 110px;
+}
+
+#confirmModalLabel {
+    float: left;
+}
+
+.scenario-confirm-button {
+    margin: 15px;
+}
+
 @keyframes lds-roller {
 	0% {
 		transform: rotate(0deg);

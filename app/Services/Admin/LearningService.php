@@ -7,6 +7,7 @@ use App\Services\Bot\BotBaseService;
 use App\Services\Bot\Truth\TruthCalcPriorityService;
 use App\Services\RepositoryServiceInterface;
 use App\Services\Bot\BotTruthService;
+use Carbon\Carbon;
 
 /**
  * 学習データサービス
@@ -73,7 +74,7 @@ class LearningService implements RepositoryServiceInterface, AdminServiceInterfa
         //形態素解析
         $params['question_morph'] = $this->morphMessage($params['question']);
         //API_ID取得
-        $now = date('Y-m-d h:i:s');
+        $now = Carbon::now();
         $params['api_id'] = $this->repository->getNextApiId();
         $params['update_at'] = $now;
         $this->repository->create($params);
@@ -90,7 +91,7 @@ class LearningService implements RepositoryServiceInterface, AdminServiceInterfa
     {
         //形態素解析
         $params['question_morph'] = $this->morphMessage($params['question']);
-        $params['update_at'] = date('Y-m-d h:i:s');
+        $params['update_at'] = Carbon::now();
         return $this->repository->update($id, $params);
     }
 
@@ -188,7 +189,7 @@ class LearningService implements RepositoryServiceInterface, AdminServiceInterfa
                 $api->addLearningData($data);
                 $api->publishLearningData();
                 // Update time sysn db
-                $date_time = date('Y-m-d h:i:s');
+                $date_time = Carbon::now();
                 foreach ($data as $row) {
                     $this->repository->setParams(['ids' => $row['id']])->filterByParams()->updateByQuery([
                         'synced_at' => $date_time

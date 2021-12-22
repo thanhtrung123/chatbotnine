@@ -150,7 +150,7 @@ img {
 	height: auto;
 	min-height: 100vh;
 	margin: 0 auto;
-	background-color: #ededfb;
+	background-color: #e5f3f3;
 	position: relative;
 }
 
@@ -158,19 +158,20 @@ img {
 #header {
 	width: 100%;
 	color: #FFFFFF;
-	padding: 5px 0;
+	padding: 13px 0 8px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 1000;
-	background-color: #161537;
+	background-color: #00893a;
+	background-image: linear-gradient(to right, #00893a , #015967);
 }
 
 #header h1 {
 	font-size: 171.4%;
 	font-weight: 500;
 	display: inline-block;
-	padding: 15px 5px 19px 52px;
+	padding: 19px 5px 19px 62px;
 	margin: 0;
 	font-family: Meiryo, sans-serif;
 	background: url(../img/images/logo.png) no-repeat top left;
@@ -183,46 +184,25 @@ img {
 }
 
 #header #request a {
-	color: #161537;
+	color: #00873c;
 	background-color: #FFFFFF;
 	font-weight: normal;
 	margin-right: 3px;
-	padding: 11px 10px 12px;
-	border-radius: 12px;
-	-moz-border-radius: 12px;
-	-webkit-border-radius: 12px;
+	padding: 11px 24px 12px;
+	border-radius: 30px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
 	text-decoration: none;
+	border-bottom: 3px solid #000000;
 	display: block;
 	font-size: 100%;
 }
 
 #header #request a:hover {
+	margin-top: 1px;
 	border-bottom: none;
-	color: #2a7a16;
 }
-.dropdown, .dropup .langguage {
-	padding: 7px;
-}
-.dropdown-menu{
-	padding: 2px;
-}
-.dropdown-item{
-	color: #000;;
-    padding: 2px 0px 0px 35px;
-    background-size: 30px;
-    margin: 5px;
-    background-repeat: no-repeat;	
-}
-.en{
-    background-image: url(../img/flag/united-kingdom.png);
-}
-.ja{
-    background-image: url(../img/flag/japan.png);
-}
-.dropdown-item:hover{
-	color: #2a7a16;
-	background-color: transparent;
-}
+
 /*----- Content -----*/
 body {
 	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
@@ -344,7 +324,7 @@ body {
 	padding: 21px 28px 16px 25px;
 	text-align: left;
 	color: #222222;
-	background-color: #cbcbff;
+	background-color: #aaed92;
 	font-size: 114.2%;
 	line-height: 1.75em;
 	-webkit-box-shadow: none;
@@ -467,7 +447,7 @@ body {
 	display: inline-block;
 	text-align: left;
 	text-decoration: none;
-	background-color: #cbcbff;
+	background-color: #d3f2c8;
 	color: #222222;
 	padding: 19px 26px 16px;
 	border-radius: 30px;
@@ -506,7 +486,7 @@ body {
 .messages .answers li.active a:hover,
 .messages .answers li.active a:focus,
 .messages .answers li.active a:active {
-	background-color: #161537;
+	background-color: #00873c;
 	color: #ffffff;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;

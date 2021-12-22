@@ -29,11 +29,18 @@ class VariantRequest extends FormRequest
      */
     public function rules()
     {
+        $diff_rules = [];
+        if ($this->method() == 'PUT') {
+            //update
+            $diff_rules['noun_variant_text'] = 'required|string|unique:tbl_variant,noun_variant_text,' . $this->route('variant');
+        } else {
+            //create
+            $diff_rules['noun_variant_text'] = 'required|string|unique:tbl_variant';
+        }
         $rules = [
-            'noun_variant_text' => 'required|string',
             'noun_text' => 'required|string',
         ];
-        return $rules;
+        return $diff_rules + $rules;
     }
 
     /**

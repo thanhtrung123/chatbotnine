@@ -658,3 +658,194 @@ if (!function_exists('rangeYear')) {
         return $year;
     }
 }
+
+if (!function_exists('htmlDisplay')) {
+    /**
+     * Display html
+     * @param string $p_value
+     * @param string $mode default xml
+     * @return $str
+     */
+    function htmlDisplay($p_value, $mode = 'xml')
+    {
+        $mode_ary = explode(",", $mode);
+        $br = '<br />';
+        if ($p_value == '') {
+            if (in_array("nonspace", $mode_ary)) return "";
+            return '&nbsp;';
+        }
+        $str = htmlspecialchars($p_value);
+        if (!in_array("nonconvert_space", $mode_ary)) {
+            if (in_array("convert_space", $mode_ary)) {
+                $str = replace_consecutive_space($str);
+            }
+            else {
+                $str = str_replace(' ', '&nbsp;', $str);
+            }
+        }
+        if (!in_array("nonconvert_br", $mode_ary)) {
+            $str = preg_replace('/\r?\n/', $br, $str);
+        }
+        if (in_array("nonconvert_amp", $mode_ary)) {
+            $str = str_replace('&amp;', '&', $str);
+        }
+        return $str;
+    }
+}
+
+if (!function_exists('getSizeImage')) {
+    /**
+     * Get image size
+     * @param string $path
+     * @return array
+     */
+    function getSizeImage($path)
+    {
+        // 実ファイルが存在していない場合は表示しない
+        if (!@is_file($path)) {
+            return array(
+                'witdh' => '',
+                'height' => '',
+                'witdhDisp' => '',
+                'heightDisp' => ''
+            );
+        }
+        // 画像サイズの取得
+        $size = @getimagesize($path);
+        $witdh = $size[0];
+        $height = $size[1];
+        // サイズ判定処理
+        $is_resize_witdh = ($witdh > config('wysiwyg.config.image_list_width')) ? true : false;
+        $is_resize_height = ($height > config('wysiwyg.config.image_list_height')) ? true : false;
+        // 縦横ともに指定サイズを超えていた場合
+        if ($is_resize_witdh && $is_resize_height) {
+            // 横のサイズの方が大きい場合、縦を横に合わせる
+            if ($witdh > $height) {
+                $witdh_disp = config('wysiwyg.config.image_list_width');
+                $height_disp = $height / ($witdh / config('wysiwyg.config.image_list_width'));
+                // 縦のサイズの方が大きい場合、横を縦にあわせる
+            }
+            else {
+                $witdh_disp = $witdh / ($height / config('wysiwyg.config.image_list_height'));
+                $height_disp = config('wysiwyg.config.image_list_height');
+            }
+            // 縦のサイズが指定のサイズを超えていた場合、横を縦にあわせる
+        }
+        else if (!$is_resize_witdh && $is_resize_height) {
+            $witdh_disp = $witdh / ($height / config('wysiwyg.config.image_list_height'));
+            $height_disp = config('wysiwyg.config.image_list_height');
+            // 横のサイズが指定のサイズを超えていた場合、縦を横に合わせる
+        }
+        else if ($is_resize_witdh && !$is_resize_height) {
+            $witdh_disp = config('wysiwyg.config.image_list_width');
+            $height_disp = $height / ($witdh / config('wysiwyg.config.image_list_width'));
+            // 縦横どちらも指定サイズを超えていない場合
+        }
+        else if (!$is_resize_witdh && !$is_resize_height) {
+            $witdh_disp = $witdh;
+            $height_disp = $height;
+        }
+        return array(
+            'witdh' => $witdh,
+            'height' => $height,
+            'witdhDisp' => $witdh_disp,
+            'heightDisp' => $height_disp
+        );
+    }
+}
+
+if (!function_exists('mkradiobutton')) {
+    /**
+     * Get display radio button
+     * @param string $values
+     * @param string $name
+     * @param string $selected
+     * @param string $br_plase
+     * @param string $on_change
+     * @param string $on_click
+     * @return string html
+     */
+    function mkradiobutton($values, $name, $selected, $br_plase, $on_change = '', $on_click = '')
+    {
+        if (!is_array($values)) return FALSE;
+        $oc = ($on_change != '') ? ' onChange="' . $on_change . '"' : '';
+        $ocl = ($on_click != '') ? ' onClick="' . $on_click . '"' : '';
+        $cnt = 1;
+        $html = '';
+        foreach ($values as $key => $value) {
+            $id = $name . '_' . $key;
+            $checked = (($selected !== '') && ($selected !== NULL) && ($selected == $key)) ? ' checked' : '';
+            $html .= '  <input type="radio" name="' . htmlspecialchars($name) . '"' . ' id="' . $id . '" value="' . htmlspecialchars($key) . '"' . $checked . $oc . $ocl . '>' . '<label for="' . $id . '">' . htmlDisplay($value) . '</label>';
+            $html .= ($br_plase == 0 || $cnt % $br_plase) ? "\n" : "<BR>\n";
+            $cnt++;
+        }
+        return $html;
+    }
+}
+
+if (!function_exists('javaStringEscape')) {
+    /**
+     * Get java string Escape
+     * @param string $str
+     * @return string script
+     */
+    function javaStringEscape($str)
+    {
+        $target_str = array(
+            "\\", 
+            "'", 
+            '"'
+        );
+        $rep_str = array(
+                "\\\\", 
+                "\'", 
+                '\"'
+        );
+        return str_replace($target_str, $rep_str, $str);
+    }
+}
+
+if (!function_exists('mkcombobox')) {
+    /**
+     * Get display combobox
+     * @param string $values
+     * @param string $name
+     * @param string $selected
+     * @param string $on_change
+     * @param string $width
+     * @return string html
+     */
+    function mkcombobox($values, $name, $selected, $on_change = '', $width = '')
+    {
+        if (!is_array($values)) return FALSE;
+        $oc = ($on_change != '') ? ' onChange="' . $on_change . '"' : '';
+        $width = ($width != "") ? ' style="width:' . $width . ';"' : '';
+        $html = '<select name="' . $name . '" id="' . $name . '"' . $oc . $width . '>' . "";
+        foreach ($values as $key => $value) {
+            $id = $name . '_' . $key;
+            $choise = (($selected !== '') && ($selected !== NULL) && ($selected == $key)) ? ' selected' : '';
+            $html .= '  <option id="' . $id . '" value="' . htmlspecialchars($key) . '"' . $choise . '>' . htmlspecialchars($value);
+        }
+        $html .= '</select>' . "";
+        return $html;
+    }
+}
+
+if (!function_exists('gd_dirname')) {
+    /**
+     * dirnameでOSの違いによる返り値の違いをなくす。
+     * dirnameで返り値の最後に「.\/」があった場合、それを取り除く。
+     * @param $str ディレクトリのパス
+     * @return ディレクトリの名前
+     */
+    function gd_dirname($str)
+    {
+        $ret = dirname($str);
+        if (in_array(substr($ret, -1, 1), array(
+                ".", 
+                "\\", 
+                "/"
+        ))) $ret = substr($ret, 0, -1);
+        return $ret;
+    }
+}

@@ -28,18 +28,22 @@ mix
     .js('resources/assets/js/drawflow.js', 'js')
     .js('resources/assets/js/drawflow-custom.js', 'js')
     .js('resources/assets/js/voiceRecognition.js', 'js')
+
+    .js('resources/assets/js/custom.js', 'js')
+    .js('resources/assets/js/wysiwyg.js', 'js')
+    .js('resources/assets/js/iframe_display.js', 'js')
     .js('resources/assets/js/select2_replace.js', 'js')
     .js('resources/assets/js/select2_replace_modal_edit.js', 'js')
+    .js('resources/assets/js/iexport-custom.js', 'js')
     .styles([
         'resources/assets/plain/css/select2_replace.css',
     ], 'public/css/select2_replace.css')
-    .js('resources/assets/js/iexport-custom.js', 'js')
     .styles([
         'resources/assets/plain/css/speech-to-text.css',
     ], 'public/css/speech-to-text.css')
     .styles([
-        'resources/assets/plain/css/synonym.css',
-    ], 'public/css/synonym.css')
+        'resources/assets/plain/css/learning.css',
+    ], 'public/css/learning.css')
     .styles([
         'resources/assets/plain/css/dashboard.css',
     ], 'public/css/dashboard.css')
@@ -60,7 +64,8 @@ mix
 
 mix
     .copyDirectory('resources/assets/plain/img', 'public/img')
-    .copyDirectory('resources/assets/plain/fonts', 'public/fonts');
+    .copyDirectory('resources/assets/plain/fonts', 'public/fonts')
+    .copyDirectory('resources/assets/plain/ckeditor', 'public/ckeditor');
 //        .copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/', 'public/fonts/bootstrap');
 
 if (!mix.inProduction()) {

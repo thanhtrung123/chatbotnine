@@ -125,11 +125,36 @@ function addNodeElement(name, e) {
     if ((name == 'scenario') && !validateParams(name_scenario, order, keyword_select, type)) {
         return false;
     }
+    if (name == 'scenario' && isNameExist(name_scenario, type)) {
+        $('#confirmModal').modal('show');
+        $('#confirmModalLabel').text('シナリオ 登録');
+        $("#ok").unbind('click').bind('click', function() {
+            addNodeProcess(name, nameSubmit, title, pos_x, pos_y, id, api_id, e);
+            $('#confirmModal').modal('hide');
+        })
+    } else {
+        addNodeProcess(name, nameSubmit, title, pos_x, pos_y, id, api_id, e);
+    }
+}
+
+/**
+ * Process add a node
+ * @param name
+ * @param nameSubmit
+ * @param title
+ * @param pos_x
+ * @param pos_y
+ * @param id
+ * @param api_id
+ * @param e
+ */
+function addNodeProcess(name, nameSubmit, title, pos_x, pos_y, id, api_id, e) {
     switch (name) {
         case 'scenario':
             var input = $("<input>").attr("type", "hidden").attr("name", "category_id").val($('.scenarioCategory').val());
             $('#formScenario').append(input);
-            var form_data = $('form#formScenario').serialize(); //Encode form elements for submission
+            //Encode form elements for submission
+            var form_data = $('form#formScenario').serialize();
             $.ajax({
                 url: urlSenario,
                 type: 'POST',
@@ -183,6 +208,28 @@ function addNodeElement(name, e) {
             break;
         default:
     }
+}
+
+/**
+ * Check exist name scenario
+ * @param name_scenario
+ * @param type
+ * @param id_scenario
+ */
+function isNameExist(name_scenario, type, id_scenario) {
+    var obj_scenario = editor.drawflow.drawflow.Home.data;
+    var is_name_exist = false;
+    Object.keys(obj_scenario).map(key => {
+        if (obj_scenario[key].class == "editor-scenario" && obj_scenario[key].name.trim() == name_scenario) {
+            if (type == 'edit' && obj_scenario[key].id.trim() != id_scenario) {
+                is_name_exist = true;
+            }
+            if (type == 'create') {
+                is_name_exist = true;
+            }
+        }
+    });
+    return is_name_exist;
 }
 
 function loadScenario(params, id) {
@@ -445,15 +492,7 @@ function setLocation(result, position) {
     });
 }
 
-function EditNodeElement() {
-    //validate
-    var name_scenario = $('form#entry_form_edit').find('input[name="name"]').val().trim(),
-    order = $('form#entry_form_edit').find('input[name="order"]').val(),
-    keyword_select = $('#clone_area_edit').find('select[name^=multi_data]'),
-    type = 'edit';
-    if (!validateParams(name_scenario, order, keyword_select, type)) {
-        return false;
-    }
+function EditProcess(order) {
     var input = $("<input>").attr("type", "hidden").attr("name", "category_id").val($('.scenarioCategory').val());
     $('#entry_form_edit').append(input);
     if (order) {
@@ -484,6 +523,30 @@ function EditNodeElement() {
         var elem = $('#' + 'node-s' + response.id.replace('s', ''));
         editor.focusData(elem, false, 's' + response.id.replace('s', ''));
     });
+}
+
+function EditNodeElement() {
+    var name_scenario = $('form#entry_form_edit').find('input[name="name"]').val().trim(),
+    order = $('form#entry_form_edit').find('input[name="order"]').val(),
+    keyword_input = $('#clone_area_edit').find('input[name^=multi_data]'),
+    keyword_select = $('#clone_area_edit').find('select[name^=multi_data] :selected'),
+    type = 'edit',
+    scenario_selected = $('.drawflow').find('.selected').attr('id');
+    //validate
+    if (!validateParams(name_scenario, order, keyword_input, keyword_select, type)) {
+        return false;
+    }
+    var id_scenario = scenario_selected.toString().replace('node-', '');
+    if (isNameExist(name_scenario, type, id_scenario)) {
+        $('#confirmModal').modal('show');
+        $('#confirmModalLabel').text('シナリオ 編集');
+        $("#ok").unbind('click').bind('click', function() {
+            EditProcess(order);
+            $('#confirmModal').modal('hide');
+        })
+    } else {
+        EditProcess(order);
+    }
 }
 
 function setDataShowScenario(response, result) {

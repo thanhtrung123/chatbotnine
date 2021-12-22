@@ -58,6 +58,7 @@
                 </div>
             </div>
         </div>
+        </div>
         <!-- footer -->
         <div class="modal-footer modal-footer--mine" style="text-align: center">
             <button type="button" class="btn btn-default closeModalAddSc" data-dismiss="modal">閉じる</button>

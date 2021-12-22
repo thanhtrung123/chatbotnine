@@ -48,6 +48,8 @@ use App\Repositories\KeyPhrase\KeyPhraseRepositoryInterface;
 use App\Repositories\KeyPhrase\KeyPhraseRepository;
 use App\Repositories\SnsUidMap\SnsUidMapRepository;
 use App\Repositories\SnsUidMap\SnsUidMapRepositoryInterface;
+use App\Repositories\ImageInformation\ImageInformationRepositoryInterface;
+use App\Repositories\ImageInformation\ImageInformationRepository;
 use Illuminate\Support\ServiceProvider;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Client;
@@ -126,6 +128,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(EnqueteAnswerRepositoryInterface::class, EnqueteAnswerRepository::class);
         //Webhook Hash
         $this->app->bind(SnsUidMapRepositoryInterface::class, SnsUidMapRepository::class);
+        // Image
+        $this->app->bind(ImageInformationRepositoryInterface::class, ImageInformationRepository::class);
 
 
         /**

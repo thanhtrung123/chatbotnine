@@ -1022,3 +1022,8 @@ span.help-block > strong {
     background-color: #DADADA;
     border-color: #DADADA;
 }
+
+.btn-upload-zip:hover {
+    background: #8091a8;
+    cursor: pointer;
+}

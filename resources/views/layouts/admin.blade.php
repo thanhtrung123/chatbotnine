@@ -16,7 +16,11 @@
         'apiToken' => \Auth::user()->api_token ?? null,
         'route'=>['login'=>route('login')]
     ]) !!};</script>
+    <script>
+        var path_link = "{{ asset('/') }}";
+    </script>
     @include('layouts.parts.common_config')
+    @yield('f_jsfiles')
     <script src="{{ asset(mix('js/admin.js')) }}"></script>
 </head>
 <body>

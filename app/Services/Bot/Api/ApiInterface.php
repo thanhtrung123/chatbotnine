@@ -48,10 +48,10 @@ interface ApiInterface
 
     /**
      * 学習データ追加
-     * @param $learning_data
+     * @param $learning_datas
      * @return mixed
      */
-    public function addLearningData($learning_data);
+    public function addLearningData($learning_datas);
 
     /**
      * 学習データ削除

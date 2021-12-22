@@ -2,6 +2,7 @@
 
 namespace App\Imports\Admin;
 
+use App\Imports\Traits\DuplicateTrait;
 use App\Models\LearningRelation;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithValidation;
@@ -18,7 +19,8 @@ use Maatwebsite\Excel\Concerns\WithBatchInserts;
 class LearningRelationImport implements ToModel, WithValidation, SkipsOnFailure, WithHeadingRow, WithChunkReading, WithBatchInserts
 {
     use \Maatwebsite\Excel\Concerns\Importable,
-        \Maatwebsite\Excel\Concerns\SkipsFailures;
+        \Maatwebsite\Excel\Concerns\SkipsFailures,
+        DuplicateTrait;
 
     /**
      * @param array $row
@@ -35,7 +37,22 @@ class LearningRelationImport implements ToModel, WithValidation, SkipsOnFailure,
             'order' => $row['order'],
         ]);
     }
-
+    
+    /**
+     * バリデート
+     * @param $validator
+     * @param $row
+     * @return array
+     */
+    public function validateRow($validator, $row)
+    {
+        $error = [];
+        if (isset($row['name']) && isset($row['api_id']) && $this->duplicateMultipeCheck(array('name', 'api_id'), $row)) {
+            $error['name'][] = config('validation.unique_combine');
+        }
+        return $error;
+    }
+    
     /**
      * ルール
      * @return array

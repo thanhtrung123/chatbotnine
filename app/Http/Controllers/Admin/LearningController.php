@@ -7,8 +7,10 @@ use App\Services\Admin\KeyPhraseService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\Admin\LearningService;
+use App\Services\Admin\ImageInformationService;
 use App\Http\Requests\Admin\LearningRequest;
 use App\Http\Requests\ExcelImportRequest;
+use App\Http\Requests\ZipImportRequest;
 use App\Imports\Admin\LearningImport;
 use App\Exports\Admin\LearningExport;
 use Constant;
@@ -22,28 +24,38 @@ use Constant;
 class LearningController extends Controller
 {
     use FormTrait;
+
     /**
      * ルート名
      */
     const ROUTE_NAME = 'admin.learning';
+
     /**
      * @var LearningService
      */
     private $service;
+
     /**
      * @var KeyPhraseService
      */
     private $key_phrase_service;
 
     /**
+     * @var ImageInformationService
+     */
+    private $img_info_service;
+
+    /**
      * LearningController constructor.
      * @param LearningService $service
      * @param KeyPhraseService $key_phrase_service
+     * @param ImageInformationService $img_info_service
      */
-    public function __construct(LearningService $service, KeyPhraseService $key_phrase_service)
+    public function __construct(LearningService $service, KeyPhraseService $key_phrase_service, ImageInformationService $img_info_service)
     {
         $this->service = $service;
         $this->key_phrase_service = $key_phrase_service;
+        $this->img_info_service = $img_info_service;
         $this->autoSetPermission('learning');
     }
     //API
@@ -90,8 +102,11 @@ class LearningController extends Controller
     public function create(Request $request)
     {
         $category_data = $this->service->getCategoryService()->getRepository()->getChoice('id', 'name');
+        // Get toolbar options
+        $options_toolbar_enabled = $this->getConfigToolbar();
         return view(self::ROUTE_NAME . '.create')->with($this->getRedirectConfirm($request))
-            ->with('category_data', $category_data);
+            ->with('category_data', $category_data)
+            ->with('options_toolbar_enabled', $options_toolbar_enabled);
     }
 
     /**
@@ -103,7 +118,9 @@ class LearningController extends Controller
     {
         if ($this->isStore($request)) {
             $request->session()->regenerateToken();
-            $params = $this->service->createLearning($request->all());
+            $learning_data = $request->all();
+            $learning_data['answer'] = str_replace("\r\n",'', ($learning_data['answer'] ?? ''));
+            $params = $this->service->createLearning($learning_data);
             $this->key_phrase_service->autoSetKeyPhrase($params['api_id']);
             //priority
             $this->service->getCalcPriorityService()->calcAllTruthPriority()->updateAllTruthPriority();
@@ -159,8 +176,11 @@ class LearningController extends Controller
         $key_phrase_data = $this->key_phrase_service->getKeyPhraseFromApiId($learning['api_id']);
         $truth_data = old('truth_data') ?? $key_phrase_data;
         $request->request->add(['truth_data' => $truth_data]);
+        // Get toolbar options
+        $options_toolbar_enabled = $this->getConfigToolbar();
         return view(self::ROUTE_NAME . '.edit')->with('id', $id)->with($this->getRedirectConfirm($request))
-            ->with('key_phrases', $truth_data)->with('category_data', $category_data);
+            ->with('key_phrases', $truth_data)->with('category_data', $category_data)
+            ->with('options_toolbar_enabled', $options_toolbar_enabled);
     }
 
     /**
@@ -175,6 +195,7 @@ class LearningController extends Controller
         $learning_data = $this->service->getRepository()->getOneById($id);
         if ($this->isStore($request)) {
             $request->session()->regenerateToken();
+            $params['answer'] = str_replace("\r\n",'', ($params['answer'] ?? ''));
             $this->service->updateLearning($id, $params);
             if ($params['auto_key_phrase_disabled'] == '1') {
                 //手動キーフレーズ設定
@@ -229,36 +250,59 @@ class LearningController extends Controller
     public function import(Request $request)
     {
         $this->clearFile($request);
+        $this->clearZip($request);
         return view(self::ROUTE_NAME . '.import')->with($this->getRedirectConfirm($request));
     }
 
     /**
      * 学習データインポート登録処理
      * @param ExcelImportRequest $request
+     * @param ZipImportRequest $request_zip
      * @param LearningImport $import
      * @return type
      */
-    public function importStore(ExcelImportRequest $request, LearningImport $import)
+    public function importStore(ExcelImportRequest $request, ZipImportRequest $request_zip, LearningImport $import)
     {
         if (function_exists('debugbar')) {
             debugbar()->disable();
         }
         if ($this->isStore($request)) {
-            //Truncate
-            $this->service->getRepository()->truncate();
-            $this->service->getTruthService()->getDbService()->getRepositoryTruth()->truncate();
-            //Import
-            $this->importFile($request, $import);
-            //priority
-            $this->service->getCalcPriorityService()->calcAllTruthPriority()->updateAllTruthPriority();
-            //インポートログ
+            if ($request->get('confirmZip')) {
+                // Get folder zip 
+                $path_dir = $request->session()->get($this->getZipSessionKey());
+                $result = $this->img_info_service->import($request, $path_dir);
+                if (!$result) {
+                    return redirect()->back()->with('msg_err_empty', config('message.upload_file_fail'));
+                }
+            }
+            if ($request->get('confirmFile')) {
+                //Truncate
+                $this->service->getRepository()->truncate();
+                $this->service->getTruthService()->getDbService()->getRepositoryTruth()->truncate();
+                //Import
+                $this->importFile($request, $import);
+                //priority
+                $this->service->getCalcPriorityService()->calcAllTruthPriority()->updateAllTruthPriority();
+                //インポートログ
+            }
             $this->service->saveLog(config('const.function.' . self::ROUTE_NAME . '_import.id'));
             return $this->complete($request);
         } else {
-            if (!$request->file('excel')) {
+            if (!$request->file('excel') && !$request->file('zip')) {
                 return redirect()->back()->with('msg_err_empty', config('message.empty_file_upload'));
             }
-            $result = $this->confirmFile($request, $import, self::ROUTE_NAME);
+            $request->request->set('confirmFile', 0);
+            $request->request->set('confirmZip', 0);
+            if ($request->file('excel')) {
+                $result = $this->confirmFile($request, $import, self::ROUTE_NAME);
+                $request->request->set('confirmFile', 1);
+            }
+            if ($request->file('zip')) {
+                $result = $this->confirmZip($request, self::ROUTE_NAME);
+                $request->request->set('confirmZip', 1);
+                $request->request->set('path_name', $result['path_name']);
+                $request->request->set('image_list_intersect', $result['image_list_intersect']);
+            }
             $redirect = redirect()->route(self::ROUTE_NAME . '.import');
             if ($result['hasError']) {
                 $redirect->with($result['errors']);

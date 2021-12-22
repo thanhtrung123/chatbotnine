@@ -79,6 +79,9 @@ class LearningImport implements ToModel, WithValidation, SkipsOnFailure, WithHea
         if (isset($row['id']) && $this->duplicateCheck('id', $row)) {
             $error['id'][] = $this->customValidationAttributes()['id'] . __("が重複しています。");
         }
+        if (isset($row['question']) && $this->duplicateCheck('question', $row)) {
+            $error['question'][] = $this->customValidationAttributes()['question'] . config('validation.duplicate');
+        }
         $attr_name = $this->customValidationAttributes()['key_phrase'];
         if (!empty($row['key_phrase'])) {
             //手動
